@@ -1,0 +1,98 @@
+@import url("https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.css");
+
+:root {
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, figure, p, ol, ul {
+  margin: 0;
+}
+
+ol[role="list"], ul[role="list"] {
+  list-style: none;
+  padding-inline: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+img {
+  display: block;
+  max-inline-size: 100%;
+}
+
+
+/* End of CSS reset */
+
+
+* {
+  font-family: "Hanken Grotesk";
+}
+
+body {
+  background-color: white;
+  margin: 3% 5%;
+}
+
+h1,
+h2 {
+  color: #111111;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+.section-divider {
+  background-color: #DDDDDD;
+  display: flex;
+  justify-self: center;
+  overflow: visible;
+  height: 2px;
+  width: 100vw;
+  margin: 3vh 0;
+}
+
+.back-btn {
+  cursor: pointer;
+}
+
+.list-information {
+  margin-top: 3vh;
+}
+
+.weather,
+.date {
+  color: #4B4B4B;
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 1vh 0;
+}
+
+.task-container {
+  display: flex;
+  margin: 1vh 0;
+  gap: 2%;
+  align-items: center;
+  text-align: center;
+  font-weight: 400;
+}
+
+.task-state-btn {
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #111111;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+}
+
+.note {
+  margin: 1vh 0;
+}
