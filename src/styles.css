@@ -50,6 +50,13 @@ h2 {
   font-size: 1.3rem;
 }
 
+p,
+ul {
+  color: #111111;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
 .section-divider {
   background-color: #DDDDDD;
   display: flex;
@@ -60,11 +67,11 @@ h2 {
   margin: 3vh 0;
 }
 
-.back-btn {
+.home-arrow {
   cursor: pointer;
 }
 
-.list-information {
+.list-info {
   margin-top: 3vh;
 }
 
@@ -79,9 +86,10 @@ h2 {
 .task-container {
   display: flex;
   margin: 1vh 0;
-  gap: 2%;
+  gap: 3%;
   align-items: center;
   text-align: center;
+  font-size: 1rem;
   font-weight: 400;
 }
 
@@ -89,8 +97,16 @@ h2 {
   background-color: rgba(255, 255, 255, 0);
   border: 1px solid #111111;
   border-radius: 50%;
-  height: 15px;
-  width: 15px;
+  height: 18px;
+  width: 18px;
+}
+
+.add-task-btn {
+  background-color: #D6F3FF;
+}
+
+.add-task-icon {
+  transform: scale(2.5);
 }
 
 .note {
