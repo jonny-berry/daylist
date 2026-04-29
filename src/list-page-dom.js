@@ -1,9 +1,12 @@
 import arrowIcon from "./assets/icons/arrow.svg";
 import addIcon from "./assets/icons/add.svg";
+import { testUser } from "./test-data.js";
 
-export function renderListPage() {
+renderList(testUser);
+
+export function renderList(list) {
   renderHomeArrow();
-  renderListInfo();
+  renderListInfo(list);
   renderSectionDivider();
   renderTodos();
   renderAddTaskDisplay();
@@ -18,7 +21,7 @@ function renderHomeArrow() {
   document.body.appendChild(homeArrow);
 }
 
-function renderListInfo() {
+function renderListInfo(list) {
   const container = document.createElement("div");
   container.className = "list-info";
   document.body.appendChild(container);
@@ -35,7 +38,7 @@ function renderListInfo() {
 
   const title = document.createElement("h1");
   title.className = "title";
-  title.innerText = "April 23 Daylist";
+  title.innerText = list.title;
   container.appendChild(title);
 }
 
