@@ -101,12 +101,20 @@ ul {
   width: 18px;
 }
 
-.add-task-btn {
-  background-color: #D6F3FF;
+.task-icon {
+  transform: scale(2.5);
 }
 
-.add-task-icon {
-  transform: scale(2.5);
+.completed-task {
+  background-color: #70E378;
+}
+
+.incomplete-task {
+  background-color: #F3D9D9;
+}
+
+.add-task-btn {
+  background-color: #D6F3FF;
 }
 
 .note {

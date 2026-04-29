@@ -1,5 +1,7 @@
 import arrowIcon from "./assets/icons/arrow.svg";
 import addIcon from "./assets/icons/add.svg";
+import checkMarkIcon from "./assets/icons/check-mark.svg";
+import xIcon from "./assets/icons/x-icon.svg";
 import { testUser } from "./test-data.js";
 
 renderList(testUser);
@@ -8,8 +10,7 @@ export function renderList(list) {
   renderHomeArrow();
   renderListInfo(list);
   renderSectionDivider();
-  renderTodos();
-  renderAddTaskDisplay();
+  renderTodos(list);
   renderSectionDivider();
   renderNotes();
 }
@@ -48,7 +49,7 @@ function renderSectionDivider() {
   document.body.appendChild(divider);
 }
 
-function renderTodos() {
+function renderTodos(list) {
   const container = document.createElement("div");
   container.className = "todo-list";
   document.body.appendChild(container);
@@ -56,6 +57,41 @@ function renderTodos() {
   const heading = document.createElement("h2");
   heading.innerText = "To-Do List";
   container.appendChild(heading);
+
+  for (let i = 0; i < list.todos.length; i++) {
+    const sectionContainer = document.getElementsByClassName("todo-list")[0];
+
+    const taskContainer = document.createElement("div");
+    taskContainer.className = "task-container";
+    sectionContainer.appendChild(taskContainer);
+
+    const button = document.createElement("button");
+    button.className = "task-state-btn";
+    taskContainer.appendChild(button);
+    
+    if (list.todos[i][1] !== "unset") {
+      const taskIcon = document.createElement("img");
+      taskIcon.className = "task-icon";
+
+      if (list.todos[i][1] === "complete") {
+        taskIcon.src = checkMarkIcon;
+        button.className += " completed-task";
+        button.appendChild(taskIcon);
+      }
+
+      else if (list.todos[i][1] === "incomplete") {
+        taskIcon.src = xIcon;
+        button.className += " incomplete-task";
+        button.appendChild(taskIcon);
+      }
+    }
+
+    const task = document.createElement("p");
+    task.innerText = list.todos[i][0];
+    taskContainer.appendChild(task);
+  }
+
+  renderAddTaskDisplay();
 }
 
 function renderAddTaskDisplay() {
@@ -71,7 +107,7 @@ function renderAddTaskDisplay() {
 
   const addEl = document.createElement("img");
   addEl.src = addIcon;
-  addEl.className = "add-task-icon"
+  addEl.className = "task-icon"
   button.appendChild(addEl);
 
   const task = document.createElement("p");
