@@ -12,7 +12,7 @@ export function renderList(list) {
   renderSectionDivider();
   renderTodos(list);
   renderSectionDivider();
-  renderNotes();
+  renderNotes(list);
 }
 
 function renderHomeArrow() {
@@ -107,15 +107,16 @@ function renderAddTaskDisplay() {
 
   const addEl = document.createElement("img");
   addEl.src = addIcon;
-  addEl.className = "task-icon"
+  addEl.className = "task-icon";
   button.appendChild(addEl);
 
   const task = document.createElement("p");
-  task.innerText = "Tap to add a task"
+  task.className = "add-task";
+  task.innerText = "Tap to add a task";
   taskContainer.appendChild(task);
 }
 
-function renderNotes() {
+function renderNotes(list) {
   const container = document.createElement("div");
   container.className = "notes";
   document.body.appendChild(container);
@@ -127,9 +128,16 @@ function renderNotes() {
   const noteList = document.createElement("ul");
   noteList.className = "note-list";
   container.appendChild(noteList);
-  
+
+  for (let i = 0; i < list.notes.length; i++) {
+    const note = document.createElement("li");
+    note.classList = "note";
+    note.innerText = list.notes[i];
+    noteList.appendChild(note);
+  }
+
   const note = document.createElement("li");
-  note.classList = "note";
+  note.classList = "note " + " add-note";
   note.innerText = "Tap to add a note";
   noteList.appendChild(note);
 }

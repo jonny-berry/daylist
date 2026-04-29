@@ -120,3 +120,8 @@ ul {
 .note {
   margin: 1vh 0;
 }
+
+.add-task,
+.add-note {
+  font-style: italic;
+}
