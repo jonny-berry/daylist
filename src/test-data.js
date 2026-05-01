@@ -23,4 +23,4 @@ export function updateTodoStatus(list, todoId) {
   else if (task.status === "incomplete") { task.status = "unset"; }
 }
 
-export const testUser = createList("April 23 Daylist");
+export const testList = createList("April 23 Daylist");

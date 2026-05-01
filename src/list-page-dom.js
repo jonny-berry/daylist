@@ -2,9 +2,9 @@ import arrowIcon from "./assets/icons/arrow.svg";
 import addIcon from "./assets/icons/add.svg";
 import checkMarkIcon from "./assets/icons/check-mark.svg";
 import xIcon from "./assets/icons/x-icon.svg";
-import { testUser, updateTodoStatus } from "./test-data.js";
+import { testList, updateTodoStatus } from "./test-data.js";
 
-renderList(testUser);
+renderList(testList);
 
 export function renderList(list) {
   renderHomeArrow();
@@ -99,12 +99,12 @@ function renderTodos(list) {
   renderAddTaskDisplay();
 }
 
-document.querySelectorAll(".task-container").forEach(task => {
-  task.addEventListener("click", () => {
-    let statusBtn = task.querySelector(".task-status-btn");
-
+document.querySelectorAll(".task-status-btn").forEach(statusBtn => {
+  statusBtn.addEventListener("click", () => {
+    const taskContainer = statusBtn.parentElement;
+    
     updateTodoDisplay(statusBtn);
-    updateTodoStatus(testUser, task.id);
+    updateTodoStatus(testList, taskContainer.id);
   })
 })
 
