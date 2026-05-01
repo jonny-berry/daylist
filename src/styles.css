@@ -67,6 +67,12 @@ ul {
   margin: 6vh 0;
 }
 
+.home-btn {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  padding: 0;
+}
+
 .home-arrow {
   cursor: pointer;
 }

@@ -16,10 +16,14 @@ export function renderList(list) {
 }
 
 function renderHomeArrow() {
+  const homeBtn = document.createElement("button");
+  homeBtn.className = "home-btn";
+  document.body.appendChild(homeBtn);
+  
   const homeArrow = document.createElement("img");
   homeArrow.src = arrowIcon;
   homeArrow.className = "home-arrow";
-  document.body.appendChild(homeArrow);
+  homeBtn.appendChild(homeArrow);
 }
 
 function renderListInfo(list) {
