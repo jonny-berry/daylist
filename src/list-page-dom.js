@@ -2,7 +2,7 @@ import arrowIcon from "./assets/icons/arrow.svg";
 import addIcon from "./assets/icons/add.svg";
 import checkMarkIcon from "./assets/icons/check-mark.svg";
 import xIcon from "./assets/icons/x-icon.svg";
-import { testUser } from "./test-data.js";
+import { testUser, updateTodoStatus } from "./test-data.js";
 
 renderList(testUser);
 
@@ -62,24 +62,25 @@ function renderTodos(list) {
     const sectionContainer = document.getElementsByClassName("todo-list")[0];
 
     const taskContainer = document.createElement("div");
+    taskContainer.id = list.todos[i].id;
     taskContainer.className = "task-container";
     sectionContainer.appendChild(taskContainer);
 
     const button = document.createElement("button");
-    button.className = "task-state-btn";
+    button.className = "task-status-btn";
     taskContainer.appendChild(button);
     
-    if (list.todos[i][1] !== "unset") {
+    if (list.todos[i].status !== "unset") {
       const taskIcon = document.createElement("img");
       taskIcon.className = "task-icon";
 
-      if (list.todos[i][1] === "complete") {
+      if (list.todos[i].status === "complete") {
         taskIcon.src = checkMarkIcon;
         button.className += " completed-task";
         button.appendChild(taskIcon);
       }
 
-      else if (list.todos[i][1] === "incomplete") {
+      else if (list.todos[i].status === "incomplete") {
         taskIcon.src = xIcon;
         button.className += " incomplete-task";
         button.appendChild(taskIcon);
@@ -87,22 +88,55 @@ function renderTodos(list) {
     }
 
     const task = document.createElement("p");
-    task.innerText = list.todos[i][0];
+    task.innerText = list.todos[i].name;
     taskContainer.appendChild(task);
   }
 
   renderAddTaskDisplay();
 }
 
+document.querySelectorAll(".task-container").forEach(task => {
+  task.addEventListener("click", () => {
+    let statusBtn = task.querySelector(".task-status-btn");
+
+    updateTodoDisplay(statusBtn);
+    updateTodoStatus(testUser, task.id);
+  })
+})
+
+function updateTodoDisplay(statusBtn) {
+  const taskIcon = document.createElement("img");
+  taskIcon.className = "task-icon";
+  
+  statusBtn.innerHTML = "";
+
+  if (statusBtn.classList.contains("completed-task")) {
+    statusBtn.classList.remove("completed-task");
+    taskIcon.src = xIcon;
+    statusBtn.className += " incomplete-task";
+    statusBtn.appendChild(taskIcon);
+  }
+
+  else if (statusBtn.classList.contains("incomplete-task")) {
+    statusBtn.classList.remove("incomplete-task");
+  }
+
+  else {
+    taskIcon.src = checkMarkIcon;
+    statusBtn.className += " completed-task";
+    statusBtn.appendChild(taskIcon);
+  }
+}
+
 function renderAddTaskDisplay() {
   const sectionContainer = document.getElementsByClassName("todo-list")[0];
 
   const taskContainer = document.createElement("div");
-  taskContainer.className = "task-container";
+  taskContainer.className = "add-task-container";
   sectionContainer.appendChild(taskContainer);
 
   const button = document.createElement("button");
-  button.className = "task-state-btn " + "add-task-btn";
+  button.className = "add-task-btn";
   taskContainer.appendChild(button);
 
   const addEl = document.createElement("img");

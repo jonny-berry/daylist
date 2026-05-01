@@ -61,10 +61,10 @@ ul {
   background-color: #DDDDDD;
   display: flex;
   justify-self: center;
-  overflow: visible;
+  overflow: hidden;
   height: 2px;
   width: 100vw;
-  margin: 3vh 0;
+  margin: 6vh 0;
 }
 
 .home-arrow {
@@ -72,7 +72,7 @@ ul {
 }
 
 .list-info {
-  margin-top: 3vh;
+  margin-top: 6vh;
 }
 
 .weather,
@@ -83,22 +83,26 @@ ul {
   margin: 1vh 0;
 }
 
-.task-container {
+.task-container,
+.add-task-container {
   display: flex;
-  margin: 1vh 0;
+  margin: 3vh 0;
   gap: 3%;
   align-items: center;
   text-align: center;
   font-size: 1rem;
   font-weight: 400;
+  cursor: pointer;
 }
 
-.task-state-btn {
+.task-status-btn,
+.add-task-btn {
   background-color: rgba(255, 255, 255, 0);
   border: 1px solid #111111;
   border-radius: 50%;
   height: 18px;
   width: 18px;
+  cursor: pointer;
 }
 
 .task-icon {
@@ -117,8 +121,13 @@ ul {
   background-color: #D6F3FF;
 }
 
+.note-list {
+  padding: 0 0 9vh 0;
+}
+
 .note {
-  margin: 1vh 0;
+  margin: 3vh 0 0;
+  list-style-position: inside;
 }
 
 .add-task,

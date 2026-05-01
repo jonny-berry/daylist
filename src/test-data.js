@@ -1,8 +1,26 @@
 function createList(title) {
-  let todos = [ ["Im a task!", "complete"], ["Another task?", "incomplete"], ["Wait.... I'm unset!!!", "unset"], ["Okay lets do one more task.", "complete"] ];
-  let notes = [ "This is a so called note", "Issa note", "Yet another note. What is going on?", "The final note" ];
+  let todos = [
+    { name: "Im a task!", status:"complete", id:crypto.randomUUID() },
+    { name: "Another task?", status:"incomplete", id:crypto.randomUUID() },
+    { name: "Wait.... I'm unset!!!", status:"unset", id:crypto.randomUUID() }
+  ];
+
+  let notes = [
+    "This is a so called note",
+    "Issa note",
+    "Yet another note. What is going on?",
+    "The final note"
+  ];
 
   return { title, todos, notes };
 }
 
-export const testUser = createList("Boom boom boom");
+export function updateTodoStatus(list, todoId) {
+  let task = list.todos.find(todo => todo.id === todoId);
+  
+  if (task.status === "unset") { task.status = "complete"; }
+  else if (task.status === "complete") { task.status = "incomplete"; }
+  else if (task.status === "incomplete") { task.status = "unset"; }
+}
+
+export const testUser = createList("April 23 Daylist");
