@@ -1,5 +1,6 @@
 import arrowIcon from "./assets/icons/arrow.svg";
 import addIcon from "./assets/icons/add.svg";
+import deleteIcon from "./assets/icons/delete.svg";
 import checkMarkIcon from "./assets/icons/check-mark.svg";
 import xIcon from "./assets/icons/x-icon.svg";
 import { testList, updateTodoStatus, updateTodoName } from "./test-data.js";
@@ -96,6 +97,14 @@ function renderTodos(list) {
     task.className = "task-name"
     task.contentEditable = true;
     taskContainer.appendChild(task);
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.className = "delete-btn";
+    taskContainer.appendChild(deleteBtn);
+
+    const deleteImage = document.createElement("img");
+    deleteImage.src = deleteIcon;
+    deleteBtn.appendChild(deleteImage);
   }
 
   renderAddTaskDisplay();

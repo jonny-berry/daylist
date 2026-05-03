@@ -98,7 +98,6 @@ ul {
   text-align: center;
   font-size: 1rem;
   font-weight: 400;
-  cursor: pointer;
 }
 
 .task-status-btn,
@@ -139,4 +138,19 @@ ul {
 .add-task,
 .add-note {
   font-style: italic;
+}
+
+.task-name {
+  cursor: pointer;
+}
+
+.delete-btn {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  justify-content: center;
+  align-items: center;
 }
