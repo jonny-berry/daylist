@@ -2,7 +2,7 @@ import arrowIcon from "./assets/icons/arrow.svg";
 import addIcon from "./assets/icons/add.svg";
 import checkMarkIcon from "./assets/icons/check-mark.svg";
 import xIcon from "./assets/icons/x-icon.svg";
-import { testList, updateTodoStatus } from "./test-data.js";
+import { testList, updateTodoStatus, updateTodoName } from "./test-data.js";
 
 renderList(testList);
 
@@ -93,18 +93,30 @@ function renderTodos(list) {
 
     const task = document.createElement("p");
     task.innerText = list.todos[i].name;
+    task.className = "task-name"
+    task.contentEditable = true;
     taskContainer.appendChild(task);
   }
 
   renderAddTaskDisplay();
 }
 
+// Update task status and display on click
 document.querySelectorAll(".task-status-btn").forEach(statusBtn => {
   statusBtn.addEventListener("click", () => {
     const taskContainer = statusBtn.parentElement;
-    
+
     updateTodoDisplay(statusBtn);
     updateTodoStatus(testList, taskContainer.id);
+  })
+})
+
+// Update task name on input
+document.querySelectorAll(".task-name").forEach(taskName => {
+  taskName.addEventListener("input", () => {
+    const taskContainer = taskName.parentElement;
+
+    updateTodoName(testList, taskName, taskContainer.id)
   })
 })
 

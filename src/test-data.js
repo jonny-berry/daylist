@@ -23,4 +23,12 @@ export function updateTodoStatus(list, todoId) {
   else if (task.status === "incomplete") { task.status = "unset"; }
 }
 
+export function updateTodoName(list, todoElement, todoId) {
+  let task = list.todos.find(todo => todo.id === todoId);
+
+  if (task.name !== todoElement.innerText) {
+    task.name = todoElement.innerText;
+  }
+}
+
 export const testList = createList("April 23 Daylist");
