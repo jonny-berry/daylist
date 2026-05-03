@@ -3,7 +3,7 @@ import addIcon from "./assets/icons/add.svg";
 import deleteIcon from "./assets/icons/delete.svg";
 import checkMarkIcon from "./assets/icons/check-mark.svg";
 import xIcon from "./assets/icons/x-icon.svg";
-import { testList, updateTodoStatus, updateTodoName } from "./test-data.js";
+import { testList, updateTodoStatus, updateTodoName, deleteTodo } from "./test-data.js";
 
 renderList(testList);
 
@@ -126,6 +126,17 @@ document.querySelectorAll(".task-name").forEach(taskName => {
     const taskContainer = taskName.parentElement;
 
     updateTodoName(testList, taskName, taskContainer.id)
+  })
+})
+
+// Delete task on button click
+document.querySelectorAll(".delete-btn").forEach(deleteBtn => {
+  deleteBtn.addEventListener("click", () => {
+    const taskContainer = deleteBtn.parentElement;
+    const todoListContainer = taskContainer.parentElement;
+
+    todoListContainer.removeChild(taskContainer);
+    deleteTodo(testList, taskContainer.id);
   })
 })
 
