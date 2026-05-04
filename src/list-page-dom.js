@@ -8,8 +8,11 @@ import {
   updateTodoStatus,
   updateTodoName,
   deleteTodo,
-  addTodo
+  addTodo,
+  updateTitle
 } from "./test-data.js";
+
+
 
 renderList(testList);
 
@@ -58,6 +61,23 @@ function renderListInfo(list) {
   title.className = "title";
   title.innerText = list.title;
   container.appendChild(title);
+
+  title.contentEditable = true;
+  title.spellcheck = false;
+
+  title.addEventListener("input", () => {
+    if (title.textContent !== "") {
+      updateTitle(list, title);
+    }
+  });
+
+  title.addEventListener("blur", () => {
+    if (title.textContent === "") {
+      title.textContent = "Add Title";
+      
+      updateTitle(list, title);
+    }
+  })
 }
 
 

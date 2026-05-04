@@ -1,4 +1,6 @@
-function createList(title) {
+function createList() {
+  let title = "Today's Daylist";
+
   let todos = [
     { name: "Complete task!", status: "complete", id: crypto.randomUUID() },
     { name: "Incomplete task :(", status: "incomplete", id: crypto.randomUUID() },
@@ -15,6 +17,18 @@ function createList(title) {
   return { title, todos, notes };
 }
 
+
+
+export const testList = createList();
+
+
+
+export function updateTitle(list, titleEl) {
+  list.title = titleEl.textContent;
+}
+
+
+
 export function updateTodoStatus(list, todoId) {
   let task = list.todos.find(todo => todo.id === todoId);
   
@@ -23,17 +37,23 @@ export function updateTodoStatus(list, todoId) {
   else if (task.status === "incomplete") { task.status = "unset"; }
 }
 
+
+
 export function updateTodoName(list, taskTextEl, todoId) {
   let task = list.todos.find(todo => todo.id === todoId);
 
   task.name = taskTextEl.innerText;
 }
 
+
+
 export function deleteTodo(list, todoId) {
   let taskIndex = list.todos.findIndex(todo => todo.id === todoId);
   
   list.todos.splice(taskIndex, 1);
 }
+
+
 
 export function addTodo(list, taskTextEl) {
   const newTask = {
@@ -44,5 +64,3 @@ export function addTodo(list, taskTextEl) {
 
   list.todos.push(newTask);
 }
-
-export const testList = createList("April 23 Daylist");

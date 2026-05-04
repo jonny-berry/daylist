@@ -141,8 +141,16 @@ ul {
   font-style: italic;
 }
 
-.task-name {
+.title {
+  position: relative;
+  padding: 1% 5% 1% 2%;
+  left: -2%;
+}
+
+.task-name,
+.add-task {
   cursor: pointer;
+  padding: 1% 5% 1% 2%;
 }
 
 .delete-btn {
