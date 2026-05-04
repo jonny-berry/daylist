@@ -1,8 +1,8 @@
 function createList(title) {
   let todos = [
-    { name: "Im a task!", status:"complete", id:crypto.randomUUID() },
-    { name: "Another task?", status:"incomplete", id:crypto.randomUUID() },
-    { name: "Wait.... I'm unset!!!", status:"unset", id:crypto.randomUUID() }
+    { name: "Im a task!", status: "complete", id: crypto.randomUUID() },
+    { name: "Another task?", status: "incomplete", id: crypto.randomUUID() },
+    { name: "Wait.... I'm unset!!!", status: "unset", id: crypto.randomUUID() }
   ];
 
   let notes = [
@@ -23,18 +23,26 @@ export function updateTodoStatus(list, todoId) {
   else if (task.status === "incomplete") { task.status = "unset"; }
 }
 
-export function updateTodoName(list, todoElement, todoId) {
+export function updateTodoName(list, taskTextEl, todoId) {
   let task = list.todos.find(todo => todo.id === todoId);
 
-  if (task.name !== todoElement.innerText) {
-    task.name = todoElement.innerText;
-  }
+  task.name = taskTextEl.innerText;
 }
 
 export function deleteTodo(list, todoId) {
   let taskIndex = list.todos.findIndex(todo => todo.id === todoId);
   
   list.todos.splice(taskIndex, 1);
+}
+
+export function addTodo(list, taskTextEl) {
+  const newTask = {
+    name: taskTextEl.innerText,
+    status: "unset",
+    id: crypto.randomUUID()
+  };
+
+  list.todos.push(newTask);
 }
 
 export const testList = createList("April 23 Daylist");
