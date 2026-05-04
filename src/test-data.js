@@ -35,8 +35,6 @@ export function deleteTodo(list, todoId) {
   let taskIndex = list.todos.findIndex(todo => todo.id === todoId);
   
   list.todos.splice(taskIndex, 1);
-
-  console.log(testList.todos);
 }
 
 export const testList = createList("April 23 Daylist");

@@ -140,6 +140,8 @@ document.querySelectorAll(".delete-btn").forEach(deleteBtn => {
   })
 })
 
+
+
 function updateTodoDisplay(statusBtn) {
   const taskIcon = document.createElement("img");
   taskIcon.className = "task-icon";
@@ -183,8 +185,47 @@ function renderAddTaskDisplay() {
   const task = document.createElement("p");
   task.className = "add-task";
   task.innerText = "Tap to add a task";
+  task.contentEditable = true;
   taskContainer.appendChild(task);
 }
+
+let addTaskText = document.getElementsByClassName("add-task")[0];
+
+addTaskText.addEventListener("click", () => {
+  addTaskText.innerText = "";
+  
+  const intervalId = setInterval(() => {
+    if (document.activeElement !== addTaskText) {
+      if (addTaskText.innerText !== "") {
+        const addTaskContainer = addTaskText.parentElement;
+        addTaskContainer.classList.remove("add-task-container");
+        addTaskContainer.classList.add("task-container");
+
+        const addTaskBtn = addTaskContainer.querySelector(".add-task-btn");
+        addTaskBtn.classList.remove("add-task-btn");
+        addTaskBtn.classList.add("task-status-btn");
+        addTaskBtn.replaceChildren(); // Remove all children
+
+        addTaskText.classList.remove("add-task");
+        addTaskText.classList.add("task-name");
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "delete-btn";
+        addTaskContainer.appendChild(deleteBtn);
+
+        const deleteImage = document.createElement("img");
+        deleteImage.src = deleteIcon;
+        deleteBtn.appendChild(deleteImage);
+
+        renderAddTaskDisplay();
+      }
+      else {
+        addTaskText.innerText = "Tap to add a task";
+      }
+      clearInterval(intervalId);
+  }
+  }, 100)
+})
 
 function renderNotes(list) {
   const container = document.createElement("div");
