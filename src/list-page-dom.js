@@ -119,31 +119,6 @@ function cycleTaskStatus(list, statusBtn, taskContainer) {
 
 
 
-function renderUnsetTask(list, taskIndex) {
-  const sectionContainer = document.querySelector(".todo-list");
-
-  const taskContainer = document.createElement("div");
-  taskContainer.id = list.todos[taskIndex].id;
-  taskContainer.className = "task-container";
-  sectionContainer.appendChild(taskContainer);
-
-  const button = document.createElement("button");
-  button.className = "task-status-btn";
-  taskContainer.appendChild(button);
-
-  const task = document.createElement("p");
-  task.innerText = list.todos[taskIndex].name;
-  task.className = "task-name"
-  task.contentEditable = true;
-  taskContainer.appendChild(task);
-
-  updateTaskName(list, task); 
-  addTaskDeleteBtn(list, taskContainer);
-  cycleTaskStatus(list, button, taskContainer);
-}
-
-
-
 function renderTask(list, taskIndex) {
   const sectionContainer = document.querySelector(".todo-list");
 
@@ -204,10 +179,17 @@ function renderTodos(list) {
 
 
 function updateTaskName(list, taskTextEl) {
-  taskTextEl.addEventListener("input", () => {
-    const taskContainer = taskTextEl.parentElement;
+  const taskContainer = taskTextEl.parentElement;
 
-    updateTodoName(testList, taskTextEl, taskContainer.id);
+  taskTextEl.addEventListener("input", () => {
+    updateTodoName(list, taskTextEl, taskContainer.id);
+  });
+
+  taskTextEl.addEventListener("blur", () => {
+    if (taskTextEl.innerText === "" || taskTextEl.innerText === "\n") {
+      taskTextEl.innerText = "Empty task";
+      updateTodoName(list, taskTextEl, taskContainer.id);
+    }
   });
 }
 
@@ -268,19 +250,23 @@ function renderAddTaskDisplay(list) {
 
 function onAddTaskClick(list, taskTextEl, button) {
   taskTextEl.addEventListener("click", () => {
-    taskTextEl.innerText = "";
+    if (taskTextEl.classList.contains("add-task") === true) {
+      taskTextEl.innerText = "";
+    }
   });
   
   taskTextEl.addEventListener("blur", () => {
-    if (
-      taskTextEl.innerText !== "" &&
-      taskTextEl.innerText !== "Tap to add a task"
-    ) {
-      convertAddTaskButtonToTask(list, taskTextEl, button);
-      renderAddTaskDisplay(list);
-    }
-    else {
-      taskTextEl.innerText = "Tap to add a task";
+    if (taskTextEl.classList.contains("add-task") === true) {
+      if (
+        taskTextEl.innerText !== "" &&
+        taskTextEl.innerText !== "Tap to add a task"
+      ) {
+        convertAddTaskButtonToTask(list, taskTextEl, button);
+        renderAddTaskDisplay(list);
+      }
+      else {
+        taskTextEl.innerText = "Tap to add a task";
+      }
     }
   });
 }
@@ -291,7 +277,7 @@ function convertAddTaskButtonToTask(list, addTaskTextEl, addTaskBtn) {
   addTodo(list, addTaskTextEl);
 
   const addTaskContainer = addTaskTextEl.parentElement;
-  addTaskContainer.id = list.todos.at(-1).id;
+  addTaskContainer.id = list.todos.at(-1).id; // Assign final id in todo array
   addTaskContainer.classList.remove("add-task-container");
   addTaskContainer.classList.add("task-container");
 
@@ -302,7 +288,8 @@ function convertAddTaskButtonToTask(list, addTaskTextEl, addTaskBtn) {
   addTaskTextEl.classList.remove("add-task");
   addTaskTextEl.classList.add("task-name");
 
-  addTaskDeleteBtn(list, addTaskContainer);
+  updateTaskName(list, addTaskTextEl);
+  addTaskDeleteBtn(list, addTaskContainer, addTaskContainer.id);
   cycleTaskStatus(list, addTaskBtn, addTaskContainer);
 }
 

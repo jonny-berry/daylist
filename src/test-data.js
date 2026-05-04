@@ -71,6 +71,4 @@ export function updateNoteName(list, noteTextEl) {
   const note = list.notes.find(note => note.id === noteTextEl.id);
 
   note.name = noteTextEl.textContent;
-
-  console.log(list.notes);
 }
