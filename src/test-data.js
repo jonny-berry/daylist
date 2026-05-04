@@ -8,10 +8,10 @@ function createList() {
   ];
 
   let notes = [
-    "This is a so called note",
-    "Issa note",
-    "Yet another note. What is going on?",
-    "The final note"
+    { name: "This is a note", id: crypto.randomUUID() },
+    { name: "Another note????", id: crypto.randomUUID() },
+    { name: "Raspberry Lemon", id: crypto.randomUUID() },
+    { name: "Beep boop this is a note", id: crypto.randomUUID() }
   ];
 
   return { title, todos, notes };
@@ -63,4 +63,14 @@ export function addTodo(list, taskTextEl) {
   };
 
   list.todos.push(newTask);
+}
+
+
+
+export function updateNoteName(list, noteTextEl) {
+  const note = list.notes.find(note => note.id === noteTextEl.id);
+
+  note.name = noteTextEl.textContent;
+
+  console.log(list.notes);
 }

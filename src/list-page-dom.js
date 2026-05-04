@@ -9,7 +9,8 @@ import {
   updateTodoName,
   deleteTodo,
   addTodo,
-  updateTitle
+  updateTitle,
+  updateNoteName
 } from "./test-data.js";
 
 
@@ -74,7 +75,7 @@ function renderListInfo(list) {
   title.addEventListener("blur", () => {
     if (title.textContent === "") {
       title.textContent = "Add Title";
-      
+
       updateTitle(list, title);
     }
   })
@@ -239,7 +240,7 @@ function updateTodoDisplay(statusBtn) {
 
 
 function renderAddTaskDisplay(list) {
-  const sectionContainer = document.getElementsByClassName("todo-list")[0];
+  const sectionContainer = document.querySelector(".todo-list");
 
   const taskContainer = document.createElement("div");
   taskContainer.className = "add-task-container";
@@ -322,13 +323,28 @@ function renderNotes(list) {
 
   for (let i = 0; i < list.notes.length; i++) {
     const note = document.createElement("li");
-    note.classList = "note";
-    note.innerText = list.notes[i];
+    note.contentEditable = true;
+    note.className = "note";
+    note.id = list.notes[i].id;
+    note.innerText = list.notes[i].name;
     noteList.appendChild(note);
+
+    note.addEventListener("input", () => {
+      updateNoteName(list, note);
+    });
+
+    note.addEventListener("blur", () => {
+      if (note.textContent === "") {
+        note.textContent = "Empty note";
+
+        updateNoteName(list, note);
+      }
+    });
   }
 
   const note = document.createElement("li");
-  note.classList = "note " + " add-note";
+  note.className = "add-note";
   note.innerText = "Tap to add a note";
+  note.contentEditable = true;
   noteList.appendChild(note);
 }

@@ -131,14 +131,19 @@ ul {
   padding: 0 0 9vh 0;
 }
 
-.note {
-  margin: 3vh 0 0;
+.note,
+.add-note {
+  margin: 3vh 0 0 0;
   list-style-position: inside;
 }
 
 .add-task,
 .add-note {
   font-style: italic;
+}
+
+.add-task:focus {
+  font-style: normal;
 }
 
 .title {
