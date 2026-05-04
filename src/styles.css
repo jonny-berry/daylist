@@ -59,13 +59,14 @@ ul {
 
 .section-divider {
   background-color: #DDDDDD;
-  display: flex;
-  justify-self: center;
-  overflow: hidden;
   height: 2px;
   width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 6vh 0;
 }
+
 
 .home-btn {
   background-color: rgba(255, 255, 255, 0);
