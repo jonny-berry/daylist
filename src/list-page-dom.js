@@ -123,7 +123,7 @@ function renderUnsetTask(list, taskIndex) {
 
 
 
-function renderCompleteTask(list, taskIndex) {
+function renderTask(list, taskIndex) {
   const sectionContainer = document.querySelector(".todo-list");
 
   const taskContainer = document.createElement("div");
@@ -135,11 +135,21 @@ function renderCompleteTask(list, taskIndex) {
   button.className = "task-status-btn";
   taskContainer.appendChild(button);
 
-  const taskIcon = document.createElement("img");
-  taskIcon.className = "task-icon";
-  taskIcon.src = checkMarkIcon;
-  button.className += " completed-task";
-  button.appendChild(taskIcon);
+  if (list.todos[taskIndex].status !== "unset") {
+    const taskIcon = document.createElement("img");
+    taskIcon.className = "task-icon";
+
+    if (list.todos[taskIndex].status === "complete") {
+      taskIcon.src = checkMarkIcon;
+      button.className += " completed-task";
+    }
+    else if (list.todos[taskIndex].status === "incomplete") {
+      taskIcon.src = xIcon;
+      button.className += " incomplete-task";
+    }
+    
+    button.appendChild(taskIcon);
+  }
 
   const task = document.createElement("p");
   task.innerText = list.todos[taskIndex].name;
@@ -147,38 +157,7 @@ function renderCompleteTask(list, taskIndex) {
   task.contentEditable = true;
   taskContainer.appendChild(task);
 
-  updateTaskName(list, task);
-  addTaskDeleteBtn(list, taskContainer);
-  cycleTaskStatus(list, button, taskContainer);
-}
-
-
-
-function renderIncompleteTask(list, taskIndex) {
-  const sectionContainer = document.querySelector(".todo-list");
-
-  const taskContainer = document.createElement("div");
-  taskContainer.id = list.todos[taskIndex].id;
-  taskContainer.className = "task-container";
-  sectionContainer.appendChild(taskContainer);
-
-  const button = document.createElement("button");
-  button.className = "task-status-btn";
-  taskContainer.appendChild(button);
-
-  const taskIcon = document.createElement("img");
-  taskIcon.className = "task-icon";
-  taskIcon.src = xIcon;
-  button.className += " incomplete-task";
-  button.appendChild(taskIcon);
-
-  const task = document.createElement("p");
-  task.innerText = list.todos[taskIndex].name;
-  task.className = "task-name"
-  task.contentEditable = true;
-  taskContainer.appendChild(task);
-
-  updateTaskName(list, task);
+  updateTaskName(list, task); 
   addTaskDeleteBtn(list, taskContainer);
   cycleTaskStatus(list, button, taskContainer);
 }
@@ -195,17 +174,7 @@ function renderTodos(list) {
   container.appendChild(heading);
 
   for (let i = 0; i < list.todos.length; i++) {
-    if (list.todos[i].status === "unset") {
-      renderUnsetTask(list, i);
-    }
-
-    else if (list.todos[i].status === "complete") {
-      renderCompleteTask(list, i);
-    }
-
-    else if (list.todos[i].status === "incomplete") {
-      renderIncompleteTask(list, i);
-    }
+    renderTask(list, i);
   }
 
   renderAddTaskDisplay(list);
@@ -220,6 +189,8 @@ function updateTaskName(list, taskTextEl) {
     updateTodoName(testList, taskTextEl, taskContainer.id);
   });
 }
+
+
 
 function updateTodoDisplay(statusBtn) {
   const taskIcon = document.createElement("img");

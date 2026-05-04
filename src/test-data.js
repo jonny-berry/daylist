@@ -1,7 +1,7 @@
 function createList(title) {
   let todos = [
-    { name: "Im a task!", status: "complete", id: crypto.randomUUID() },
-    { name: "Another task?", status: "incomplete", id: crypto.randomUUID() },
+    { name: "Complete task!", status: "complete", id: crypto.randomUUID() },
+    { name: "Incomplete task :(", status: "incomplete", id: crypto.randomUUID() },
     { name: "Wait.... I'm unset!!!", status: "unset", id: crypto.randomUUID() }
   ];
 
