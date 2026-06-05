@@ -272,6 +272,30 @@ function onAddTaskClick(list, taskTextEl, button) {
 }
 
 
+function onAddNoteClick(list, noteTextEl) {
+  noteTextEl.addEventListener("click", () => {
+    if (noteTextEl.classList.contains("add-note")) {
+      noteTextEl.innerText = "";
+    }
+
+    noteTextEl.addEventListener("blur", () => {
+      if (noteTextEl.classList.contains("add-note") === true) {
+        if (
+          noteTextEl.innerText !== "" &&
+          noteTextEl.innerText !== "Tap to add a note"
+        ) {
+          convertAddNoteButtonToNote(list, noteTextEl);
+          renderAddNoteDisplay(list);
+        }
+        else {
+          noteTextEl.innerText = "Tap to add a note";
+        }
+      }
+    });
+  });
+}
+
+
 
 function convertAddTaskButtonToTask(list, addTaskTextEl, addTaskBtn) {
   addTodo(list, addTaskTextEl);
@@ -340,6 +364,14 @@ function renderNotes(list) {
     addDeleteBtns(list, noteContatiner);
   }
 
+  renderAddNoteDisplay(list);
+}
+
+
+
+function renderAddNoteDisplay(list) {
+  const noteList = document.querySelector(".note-list");
+
   const addNoteContainer = document.createElement("div");
   addNoteContainer.className = "add-note-container";
   noteList.appendChild(addNoteContainer);
@@ -350,6 +382,5 @@ function renderNotes(list) {
   note.contentEditable = true;
   addNoteContainer.appendChild(note);
 
-  convertAddNoteButtonToNote(list, note);
+  onAddNoteClick(list, note);
 }
-

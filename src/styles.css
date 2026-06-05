@@ -151,7 +151,8 @@ ul {
   font-style: italic;
 }
 
-.add-task:focus {
+.add-task:focus,
+.add-note:focus {
   font-style: normal;
 }
 
