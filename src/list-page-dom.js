@@ -6,11 +6,10 @@ import xIcon from "./assets/icons/x-icon.svg";
 import {
   testList,
   updateTodoStatus,
-  updateTodoName,
+  updateItemName,
   deleteTodo,
   addTodo,
   updateTitle,
-  updateNoteName
 } from "./test-data.js";
 
 
@@ -153,7 +152,7 @@ function renderTask(list, taskIndex) {
   task.contentEditable = true;
   taskContainer.appendChild(task);
 
-  updateTaskName(list, task); 
+  setupItemNameEvents(list, task, "todos"); 
   addDeleteBtns(list, taskContainer);
   cycleTaskStatus(list, button, taskContainer);
 }
@@ -177,22 +176,21 @@ function renderTodos(list) {
 }
 
 
+function setupItemNameEvents(list, itemTextEl, itemType) {
+  const itemContainer = itemTextEl.parentElement;
 
-function updateTaskName(list, taskTextEl) {
-  const taskContainer = taskTextEl.parentElement;
-
-  taskTextEl.addEventListener("input", () => {
-    updateTodoName(list, taskTextEl, taskContainer.id);
+  itemContainer.addEventListener("input", () => {
+    updateItemName(list, itemTextEl, itemContainer.id, itemType);
   });
 
-  taskTextEl.addEventListener("blur", () => {
-    if (taskTextEl.innerText === "" || taskTextEl.innerText === "\n") {
-      taskTextEl.innerText = "Empty task";
-      updateTodoName(list, taskTextEl, taskContainer.id);
+  itemTextEl.addEventListener("blur", () => {
+    if (itemTextEl.innerText === "" || itemTextEl.innerText === "\n") {
+      itemType === "todos" ? itemTextEl.innerText = "Empty task" : itemTextEl.innerText = "Empty note";
+
+      updateItemName(list, itemTextEl, itemContainer.id, itemType);
     }
   });
 }
-
 
 
 function updateTodoDisplay(statusBtn) {
@@ -288,7 +286,7 @@ function convertAddTaskButtonToTask(list, addTaskTextEl, addTaskBtn) {
   addTaskTextEl.classList.remove("add-task");
   addTaskTextEl.classList.add("task-name");
 
-  updateTaskName(list, addTaskTextEl);
+  setupItemNameEvents(list, addTaskTextEl, "todos");
   addDeleteBtns(list, addTaskContainer, addTaskContainer.id);
   cycleTaskStatus(list, addTaskBtn, addTaskContainer);
 }
@@ -310,28 +308,17 @@ function renderNotes(list) {
 
   for (let i = 0; i < list.notes.length; i++) {
     const noteContatiner = document.createElement("div");
+    noteContatiner.id = list.notes[i].id;
     noteContatiner.className = "note-container";
     noteList.appendChild(noteContatiner);
 
     const note = document.createElement("li");
     note.contentEditable = true;
     note.className = "note";
-    note.id = list.notes[i].id;
     note.innerText = list.notes[i].name;
     noteContatiner.appendChild(note);
 
-    note.addEventListener("input", () => {
-      updateNoteName(list, note);
-    });
-
-    note.addEventListener("blur", () => {
-      if (note.textContent === "") {
-        note.textContent = "Empty note";
-
-        updateNoteName(list, note);
-      }
-    });
-
+    setupItemNameEvents(list, note, "notes");
     addDeleteBtns(list, noteContatiner);
   }
 
@@ -345,3 +332,4 @@ function renderNotes(list) {
   note.contentEditable = true;
   addNoteContainer.appendChild(note);
 }
+

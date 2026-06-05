@@ -39,11 +39,14 @@ export function updateTodoStatus(list, todoId) {
 
 
 
-export function updateTodoName(list, taskTextEl, todoId) {
-  let task = list.todos.find(todo => todo.id === todoId);
+export function updateItemName(list, itemTextEl, itemId, itemType) {
+  let item = list[itemType].find(item => item.id === itemId);
 
-  task.name = taskTextEl.innerText;
+  item.name = itemTextEl.innerText;
+
+  console.log(list)
 }
+
 
 
 
@@ -63,12 +66,4 @@ export function addTodo(list, taskTextEl) {
   };
 
   list.todos.push(newTask);
-}
-
-
-
-export function updateNoteName(list, noteTextEl) {
-  const note = list.notes.find(note => note.id === noteTextEl.id);
-
-  note.name = noteTextEl.textContent;
 }
