@@ -67,3 +67,14 @@ export function addTodo(list, taskTextEl) {
 
   list.todos.push(newTask);
 }
+
+
+
+export function addNote(list, noteTextEl) {
+  const newNote = {
+    name: noteTextEl.innerText,
+    id: crypto.randomUUID()
+  }
+
+  list.notes.push(newNote);
+}

@@ -9,6 +9,7 @@ import {
   updateItemName,
   deleteTodo,
   addTodo,
+  addNote,
   updateTitle,
 } from "./test-data.js";
 
@@ -176,6 +177,7 @@ function renderTodos(list) {
 }
 
 
+// itemType is either "todos" or "notes"
 function setupItemNameEvents(list, itemTextEl, itemType) {
   const itemContainer = itemTextEl.parentElement;
 
@@ -292,6 +294,22 @@ function convertAddTaskButtonToTask(list, addTaskTextEl, addTaskBtn) {
 }
 
 
+function convertAddNoteButtonToNote(list, addNoteTextEl) {
+  addNote(list, addNoteTextEl);
+
+  const noteContainer = addNoteTextEl.parentElement;
+  noteContainer.id = list.notes.at(-1).id; // Assign final id in notes array
+  noteContainer.classList.remove("add-note-container");
+  noteContainer.className = "note-container";
+
+  addNoteTextEl.classList.remove("add-note");
+  addNoteTextEl.className = "note";
+
+  setupItemNameEvents(list, addNoteTextEl, "notes");
+  addDeleteBtns(list, addNoteTextEl.parentElement, addNoteTextEl.parentElement.id);
+}
+
+
 
 function renderNotes(list) {
   const container = document.createElement("div");
@@ -331,5 +349,7 @@ function renderNotes(list) {
   note.innerText = "Tap to add a note";
   note.contentEditable = true;
   addNoteContainer.appendChild(note);
+
+  convertAddNoteButtonToNote(list, note);
 }
 
