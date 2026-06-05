@@ -129,11 +129,20 @@ ul {
 
 .note-list {
   padding: 0 0 9vh 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.note-container,
+.add-note-container {
+  display: flex;
+  align-items: center;
+  margin-top: 3vh;
 }
 
 .note,
 .add-note {
-  margin: 3vh 0 0 0;
   list-style-position: inside;
 }
 

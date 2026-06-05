@@ -91,7 +91,7 @@ function renderSectionDivider() {
 
 
 
-function addTaskDeleteBtn(list, taskContainer) {
+function addDeleteBtns(list, taskContainer) {
   const deleteBtn = document.createElement("button");
   deleteBtn.className = "delete-btn";
   taskContainer.appendChild(deleteBtn);
@@ -154,7 +154,7 @@ function renderTask(list, taskIndex) {
   taskContainer.appendChild(task);
 
   updateTaskName(list, task); 
-  addTaskDeleteBtn(list, taskContainer);
+  addDeleteBtns(list, taskContainer);
   cycleTaskStatus(list, button, taskContainer);
 }
 
@@ -289,7 +289,7 @@ function convertAddTaskButtonToTask(list, addTaskTextEl, addTaskBtn) {
   addTaskTextEl.classList.add("task-name");
 
   updateTaskName(list, addTaskTextEl);
-  addTaskDeleteBtn(list, addTaskContainer, addTaskContainer.id);
+  addDeleteBtns(list, addTaskContainer, addTaskContainer.id);
   cycleTaskStatus(list, addTaskBtn, addTaskContainer);
 }
 
@@ -309,12 +309,16 @@ function renderNotes(list) {
   container.appendChild(noteList);
 
   for (let i = 0; i < list.notes.length; i++) {
+    const noteContatiner = document.createElement("div");
+    noteContatiner.className = "note-container";
+    noteList.appendChild(noteContatiner);
+
     const note = document.createElement("li");
     note.contentEditable = true;
     note.className = "note";
     note.id = list.notes[i].id;
     note.innerText = list.notes[i].name;
-    noteList.appendChild(note);
+    noteContatiner.appendChild(note);
 
     note.addEventListener("input", () => {
       updateNoteName(list, note);
@@ -327,11 +331,17 @@ function renderNotes(list) {
         updateNoteName(list, note);
       }
     });
+
+    addDeleteBtns(list, noteContatiner);
   }
+
+  const addNoteContainer = document.createElement("div");
+  addNoteContainer.className = "add-note-container";
+  noteList.appendChild(addNoteContainer);
 
   const note = document.createElement("li");
   note.className = "add-note";
   note.innerText = "Tap to add a note";
   note.contentEditable = true;
-  noteList.appendChild(note);
+  addNoteContainer.appendChild(note);
 }
