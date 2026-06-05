@@ -249,7 +249,7 @@ function renderAddTaskDisplay(list) {
 
 
 function onAddTaskClick(list, taskTextEl, button) {
-  taskTextEl.addEventListener("click", () => {
+  taskTextEl.addEventListener("focus", () => {
     if (taskTextEl.classList.contains("add-task") === true) {
       taskTextEl.innerText = "";
     }
@@ -272,23 +272,23 @@ function onAddTaskClick(list, taskTextEl, button) {
 }
 
 
-function onAddNoteClick(list, noteTextEl) {
-  noteTextEl.addEventListener("click", () => {
+function onAddNoteClick(list, noteTextEl, textSpan) {
+  textSpan.addEventListener("focus", () => {
     if (noteTextEl.classList.contains("add-note")) {
-      noteTextEl.innerText = "";
+      textSpan.innerText = "";
     }
 
-    noteTextEl.addEventListener("blur", () => {
+    textSpan.addEventListener("blur", () => {
       if (noteTextEl.classList.contains("add-note") === true) {
         if (
-          noteTextEl.innerText !== "" &&
-          noteTextEl.innerText !== "Tap to add a note"
+          textSpan.innerText !== "" &&
+          textSpan.innerText !== "Tap to add a note"
         ) {
           convertAddNoteButtonToNote(list, noteTextEl);
           renderAddNoteDisplay(list);
         }
         else {
-          noteTextEl.innerText = "Tap to add a note";
+          textSpan.innerText = "Tap to add a note";
         }
       }
     });
@@ -355,9 +355,13 @@ function renderNotes(list) {
     noteList.appendChild(noteContatiner);
 
     const note = document.createElement("li");
-    note.contentEditable = true;
     note.className = "note";
-    note.innerText = list.notes[i].name;
+
+    const textSpan = document.createElement("span");
+    textSpan.contentEditable = true;
+    textSpan.className = "note-span";
+    textSpan.innerText = list.notes[i].name;
+    note.appendChild(textSpan);
     noteContatiner.appendChild(note);
 
     setupItemNameEvents(list, note, "notes");
@@ -378,9 +382,13 @@ function renderAddNoteDisplay(list) {
 
   const note = document.createElement("li");
   note.className = "add-note";
-  note.innerText = "Tap to add a note";
-  note.contentEditable = true;
+
+  const textSpan = document.createElement("span");
+  textSpan.innerText = "Tap to add a note";
+  textSpan.className = "add-note-span";
+  textSpan.contentEditable = true;
+  note.appendChild(textSpan);
   addNoteContainer.appendChild(note);
 
-  onAddNoteClick(list, note);
+  onAddNoteClick(list, note, textSpan);
 }

@@ -137,12 +137,15 @@ ul {
 .note-container,
 .add-note-container {
   display: flex;
+  flex-direction: row;
   align-items: center;
   margin-top: 3vh;
 }
 
+
 .note,
 .add-note {
+  width: 100%;
   list-style-position: inside;
 }
 
@@ -152,7 +155,8 @@ ul {
 }
 
 .add-task:focus,
-.add-note:focus {
+.note-span:focus,
+.add-note-span:focus {
   font-style: normal;
 }
 
@@ -163,7 +167,9 @@ ul {
 }
 
 .task-name,
-.add-task {
+.add-task,
+.note-span,
+.add-note-span {
   cursor: pointer;
   padding: 1% 5% 1% 2%;
 }
