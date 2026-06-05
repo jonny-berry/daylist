@@ -7,7 +7,7 @@ import {
   testList,
   updateTodoStatus,
   updateItemName,
-  deleteTodo,
+  deleteItem,
   addTodo,
   addNote,
   updateTitle,
@@ -91,7 +91,7 @@ function renderSectionDivider() {
 
 
 
-function addDeleteBtns(list, taskContainer) {
+function addDeleteBtns(list, taskContainer, itemType) {
   const deleteBtn = document.createElement("button");
   deleteBtn.className = "delete-btn";
   taskContainer.appendChild(deleteBtn);
@@ -104,7 +104,7 @@ function addDeleteBtns(list, taskContainer) {
     const todoListContainer = taskContainer.parentElement;
 
     todoListContainer.removeChild(taskContainer);
-    deleteTodo(list, taskContainer.id);
+    deleteItem(list, taskContainer.id, itemType);
   })
 }
 
@@ -154,7 +154,7 @@ function renderTask(list, taskIndex) {
   taskContainer.appendChild(task);
 
   setupItemNameEvents(list, task, "todos"); 
-  addDeleteBtns(list, taskContainer);
+  addDeleteBtns(list, taskContainer, "todos");
   cycleTaskStatus(list, button, taskContainer);
 }
 
@@ -313,7 +313,7 @@ function convertAddTaskButtonToTask(list, addTaskTextEl, addTaskBtn) {
   addTaskTextEl.classList.add("task-name");
 
   setupItemNameEvents(list, addTaskTextEl, "todos");
-  addDeleteBtns(list, addTaskContainer, addTaskContainer.id);
+  addDeleteBtns(list, addTaskContainer, "todos");
   cycleTaskStatus(list, addTaskBtn, addTaskContainer);
 }
 
@@ -330,7 +330,7 @@ function convertAddNoteButtonToNote(list, addNoteTextEl) {
   addNoteTextEl.className = "note";
 
   setupItemNameEvents(list, addNoteTextEl, "notes");
-  addDeleteBtns(list, addNoteTextEl.parentElement, addNoteTextEl.parentElement.id);
+  addDeleteBtns(list, addNoteTextEl.parentElement, "notes");
 }
 
 
@@ -361,7 +361,7 @@ function renderNotes(list) {
     noteContatiner.appendChild(note);
 
     setupItemNameEvents(list, note, "notes");
-    addDeleteBtns(list, noteContatiner);
+    addDeleteBtns(list, noteContatiner, "notes");
   }
 
   renderAddNoteDisplay(list);

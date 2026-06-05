@@ -49,11 +49,10 @@ export function updateItemName(list, itemTextEl, itemId, itemType) {
 
 
 
+export function deleteItem(list, itemId, itemType) {
+  let itemIndex = list[itemType].findIndex(item => item.id === itemId)
 
-export function deleteTodo(list, todoId) {
-  let taskIndex = list.todos.findIndex(todo => todo.id === todoId);
-  
-  list.todos.splice(taskIndex, 1);
+  list[itemType].splice(itemIndex, 1);
 }
 
 
@@ -66,6 +65,8 @@ export function addTodo(list, taskTextEl) {
   };
 
   list.todos.push(newTask);
+
+  console.log(testList)
 }
 
 
@@ -77,4 +78,5 @@ export function addNote(list, noteTextEl) {
   }
 
   list.notes.push(newNote);
+  console.log(testList)
 }
