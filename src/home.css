@@ -19,7 +19,7 @@ h2 {
 .hero-text {
   position: relative;
   bottom: 0.5rem;
-  left: 0.9rem;
+  left: 1rem;
   color: white;
   text-shadow: 0 2px 10px black;
 }
