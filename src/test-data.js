@@ -43,8 +43,6 @@ export function updateItemName(list, itemTextEl, itemId, itemType) {
   let item = list[itemType].find(item => item.id === itemId);
 
   item.name = itemTextEl.innerText;
-
-  console.log(list)
 }
 
 
@@ -65,8 +63,6 @@ export function addTodo(list, taskTextEl) {
   };
 
   list.todos.push(newTask);
-
-  console.log(testList)
 }
 
 
@@ -78,5 +74,4 @@ export function addNote(list, noteTextEl) {
   }
 
   list.notes.push(newNote);
-  console.log(testList)
 }

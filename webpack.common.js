@@ -2,15 +2,25 @@ import path from "node:path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
-  entry: "./src/index.js",
+  entry: {
+    index: "./src/index.js",
+    home: "./src/home.js",
+  },
   output: {
-    filename: "main.js",
+    filename: "[name].js",
     path: path.resolve(import.meta.dirname, "dist"),
     clean: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/template.html",
+      filename: "template.html",
+      chunks: ["index"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/home.html",
+      filename: "home.html",
+      chunks: ["home"],
     }),
   ],
   module: {
