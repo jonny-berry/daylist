@@ -57,6 +57,10 @@ ul {
   font-size: 1rem;
 }
 
+button {
+  cursor: pointer;
+}
+
 .section-divider {
   background-color: #DDDDDD;
   height: 2px;

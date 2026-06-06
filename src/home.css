@@ -1,7 +1,9 @@
 body {
-  /* border: solid #D9D9D9;
-  border-width: 0.3rem; */
   margin: 0;
+}
+
+h2 {
+  font-weight: 500;
 }
 
 .hero {
@@ -10,13 +12,65 @@ body {
   background-image: url(assets/images/sword-background.gif);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   height: 12rem;
 }
 
 .hero-text {
   position: relative;
   bottom: 0.5rem;
-  left: 0.5rem;
+  left: 0.9rem;
   color: white;
   text-shadow: 0 2px 10px black;
 }
+
+.new-list-container,
+.list-container {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+}
+
+.new-list-container > h2,
+.list-container > h2 {
+  margin-left: 0.5rem;
+  width: 100%;
+}
+
+.list-sidebar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #D9D9D9;
+  width: 1rem;
+  height: 100%;
+}
+
+.list-options-btn {
+  border: solid #D9D9D9;
+  border-width: 0 0 0.3rem 0;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
+
+.lists-display {
+  border: solid #D9D9D9;
+  border-width: 0.3rem 0 0 0;
+}
+
+.lists-display > div {
+  border: solid #D9D9D9;
+  border-width: 0 0 0.2rem 0;
+}
+
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  padding: 0;
+  width: 100%;
+}
+

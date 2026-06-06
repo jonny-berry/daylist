@@ -1,5 +1,5 @@
 import arrowIcon from "./assets/icons/arrow.svg";
-import addIcon from "./assets/icons/add.svg";
+import addIcon from "./assets/icons/add-blue.svg";
 import deleteIcon from "./assets/icons/delete.svg";
 import checkMarkIcon from "./assets/icons/check-mark.svg";
 import xIcon from "./assets/icons/x-icon.svg";
