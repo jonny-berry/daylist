@@ -3,20 +3,22 @@ import addIcon from "./assets/icons/add-blue.svg";
 import deleteIcon from "./assets/icons/delete.svg";
 import checkMarkIcon from "./assets/icons/check-mark.svg";
 import xIcon from "./assets/icons/x-icon.svg";
+import { loadState } from "./storage.js"
 import {
-  // testList,
+  getCurrList,
   updateTodoStatus,
   updateItemName,
   deleteItem,
   addTodo,
   addNote,
   updateTitle,
+  userLists,
 } from "./test-data.js";
 
 
 
-renderList(testList);
-
+loadState();
+renderList(getCurrList());
 
 
 export function renderList(list) {
@@ -113,7 +115,7 @@ function addDeleteBtns(list, taskContainer, itemType) {
 function cycleTaskStatus(list, statusBtn, taskContainer) {
   statusBtn.addEventListener("click", () => {
     updateTodoDisplay(statusBtn);
-    updateTodoStatus(testList, taskContainer.id);
+    updateTodoStatus(list, taskContainer.id);
   });
 }
 

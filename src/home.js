@@ -2,9 +2,13 @@ import "./styles.css";
 import "./home.css";
 import whitePlusIcon from "./assets/icons/add-white.svg";
 import horizontalDots from "./assets/icons/more.svg"
+import { saveState } from "./storage.js"
 import {
+  userLists,
+  setCurrListId,
+  setList,
   createList,
-  pushUserList
+  pushUserList,
 } from "./test-data.js";
 
 
@@ -42,9 +46,13 @@ function renderCreateList(listsDisplay) {
   const newListContainer = document.createElement("div");
   newListContainer.className = "new-list-container";
   listsDisplay.appendChild(newListContainer);
-  
+
   newListContainer.addEventListener("click", () => {
     pushUserList(createList());
+    setCurrListId(userLists.at(-1).id);
+    saveState();
+
+    window.location.href = "/template.html";
   })
 
   const sidebar = document.createElement("div");

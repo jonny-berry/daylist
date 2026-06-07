@@ -11,11 +11,36 @@ export function createList() {
 }
 
 
-let userLists = [];
+
+export function loadUserLists() {
+  const saved = JSON.parse(localStorage.getItem("userLists")) || [];
+  saved.forEach(list => userLists.push(list));
+}
+
+
+
+export let userLists = [];
+
 
 
 export function pushUserList(list) {
   userLists.push(list);
+}
+
+
+
+export let currListId;
+
+
+
+export function setCurrListId(id) {
+  currListId = id;
+}
+
+
+
+export function getCurrList() {
+  return userLists.find(list => list.id === currListId);
 }
 
 
