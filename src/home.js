@@ -1,6 +1,7 @@
 import "./styles.css";
 import "./home.css";
 import whitePlusIcon from "./assets/icons/add-white.svg";
+import pinIcon from "./assets/icons/pin.svg"
 import horizontalDots from "./assets/icons/more.svg"
 import { loadState, saveState } from "./storage.js"
 import {
@@ -101,6 +102,16 @@ function renderList(list, listsDisplay) {
   const sidebar = document.createElement("div");
   sidebar.className = "list-sidebar";
   container.appendChild(sidebar);
+
+  if (list.isPinned === true) {
+    const sidebarBtn = document.createElement("button");
+    sidebarBtn.className = "sidebar-btn";
+    sidebar.appendChild(sidebarBtn);
+
+    const pinImage = document.createElement("img");
+    pinImage.src = pinIcon;
+    sidebarBtn.appendChild(pinImage);
+  }
 
   const heading = document.createElement("h2");
   heading.innerText = list.title;

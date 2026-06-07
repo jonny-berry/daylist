@@ -2,10 +2,6 @@ import { loadState, saveState } from "./storage";
 
 
 
-
-
-
-
 export function createList() {
   const id = crypto.randomUUID();
 
