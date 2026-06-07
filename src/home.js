@@ -91,6 +91,12 @@ function renderList(list, listsDisplay) {
   container.className = "list-container";
   listsDisplay.appendChild(container);
 
+  container.addEventListener("click", () => {
+    setCurrListId(list.id);
+    saveState();
+
+    window.location.href = "/template.html";
+  })
 
   const sidebar = document.createElement("div");
   sidebar.className = "list-sidebar";
@@ -118,4 +124,3 @@ function renderListsDisplay(list, listsDisplay) {
     renderList(list[i], listsDisplay);
   }
 }
-
