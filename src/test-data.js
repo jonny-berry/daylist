@@ -1,3 +1,11 @@
+import { loadState, saveState } from "./storage";
+
+
+
+
+
+
+
 export function createList() {
   const id = crypto.randomUUID();
 
@@ -27,6 +35,7 @@ export let userLists = [];
 
 export function pushUserList(list) {
   userLists.push(list);
+  saveState();
 }
 
 
@@ -37,6 +46,7 @@ export let currListId;
 
 export function setCurrListId(id) {
   currListId = id;
+  saveState();
 }
 
 
@@ -49,6 +59,7 @@ export function getCurrList() {
 
 export function updateTitle(list, titleEl) {
   list.title = titleEl.textContent;
+  saveState();
 }
 
 
@@ -59,6 +70,8 @@ export function updateTodoStatus(list, todoId) {
   if (task.status === "unset") { task.status = "complete"; }
   else if (task.status === "complete") { task.status = "incomplete"; }
   else if (task.status === "incomplete") { task.status = "unset"; }
+
+  saveState();
 }
 
 
@@ -67,6 +80,8 @@ export function updateItemName(list, itemTextEl, itemId, itemType) {
   let item = list[itemType].find(item => item.id === itemId);
 
   item.name = itemTextEl.innerText;
+
+  saveState();
 }
 
 
@@ -75,6 +90,8 @@ export function deleteItem(list, itemId, itemType) {
   let itemIndex = list[itemType].findIndex(item => item.id === itemId)
 
   list[itemType].splice(itemIndex, 1);
+
+  saveState();
 }
 
 
@@ -87,6 +104,8 @@ export function addTodo(list, taskTextEl) {
   };
 
   list.todos.push(newTask);
+
+  saveState();
 }
 
 
@@ -98,4 +117,6 @@ export function addNote(list, noteTextEl) {
   }
 
   list.notes.push(newNote);
+
+  saveState();
 }

@@ -16,7 +16,7 @@ loadState();
 
 
 
-renderHomePage();
+renderHomePage(userLists);
 
 
 
@@ -27,7 +27,7 @@ function renderHomePage(list) {
   listsDisplay.className = "lists-display";
   document.body.appendChild(listsDisplay);
 
-  renderListsDisplay(userLists, listsDisplay);
+  renderListsDisplay(list, listsDisplay);
 }
 
 
