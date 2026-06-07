@@ -2,7 +2,7 @@ import "./styles.css";
 import "./home.css";
 import whitePlusIcon from "./assets/icons/add-white.svg";
 import horizontalDots from "./assets/icons/more.svg"
-import { saveState } from "./storage.js"
+import { loadState, saveState } from "./storage.js"
 import {
   userLists,
   setCurrListId,
@@ -10,6 +10,9 @@ import {
   createList,
   pushUserList,
 } from "./test-data.js";
+
+
+loadState();
 
 
 
@@ -24,7 +27,7 @@ function renderHomePage(list) {
   listsDisplay.className = "lists-display";
   document.body.appendChild(listsDisplay);
 
-  renderCreateList(listsDisplay);
+  renderListsDisplay(userLists, listsDisplay);
 }
 
 
@@ -79,3 +82,40 @@ function renderCreateList(listsDisplay) {
   moreOptionsImage.src = horizontalDots;
   moreOptionsBtn.appendChild(moreOptionsImage);
 }
+
+
+
+function renderList(list, listsDisplay) {
+  const container = document.createElement("div");
+  container.id = list.id;
+  container.className = "list-container";
+  listsDisplay.appendChild(container);
+
+
+  const sidebar = document.createElement("div");
+  sidebar.className = "list-sidebar";
+  container.appendChild(sidebar);
+
+  const heading = document.createElement("h2");
+  heading.innerText = list.title;
+  container.appendChild(heading);
+
+  const moreOptionsBtn = document.createElement("button");
+  moreOptionsBtn.className = "list-options-btn";
+  container.appendChild(moreOptionsBtn);
+
+  const moreOptionsImage = document.createElement("img");
+  moreOptionsImage.src = horizontalDots;
+  moreOptionsBtn.appendChild(moreOptionsImage);
+}
+
+
+
+function renderListsDisplay(list, listsDisplay) {
+  renderCreateList(listsDisplay);
+
+  for (let i = 0; i < userLists.length; i++) {
+    renderList(list[i], listsDisplay);
+  }
+}
+

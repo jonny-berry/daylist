@@ -21,6 +21,7 @@ loadState();
 renderList(getCurrList());
 
 
+
 export function renderList(list) {
   renderHomeArrow();
   renderListInfo(list);

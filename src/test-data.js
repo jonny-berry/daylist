@@ -1,13 +1,15 @@
 export function createList() {
-  let title = "Today's Daylist";
-
   const id = crypto.randomUUID();
+
+  let title = "Today's Daylist";
 
   let todos = [];
 
   let notes = [];
 
-  return { title, id, todos, notes };
+  let isPinned = false;
+
+  return { id, title, todos, notes, isPinned };
 }
 
 
