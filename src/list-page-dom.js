@@ -4,7 +4,7 @@ import deleteIcon from "./assets/icons/delete.svg";
 import checkMarkIcon from "./assets/icons/check-mark.svg";
 import xIcon from "./assets/icons/x-icon.svg";
 import {
-  testList,
+  // testList,
   updateTodoStatus,
   updateItemName,
   deleteItem,

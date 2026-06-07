@@ -2,7 +2,10 @@ import "./styles.css";
 import "./home.css";
 import whitePlusIcon from "./assets/icons/add-white.svg";
 import horizontalDots from "./assets/icons/more.svg"
-import { testList } from "./test-data.js";
+import {
+  createList,
+  pushUserList
+} from "./test-data.js";
 
 
 
@@ -39,6 +42,10 @@ function renderCreateList(listsDisplay) {
   const newListContainer = document.createElement("div");
   newListContainer.className = "new-list-container";
   listsDisplay.appendChild(newListContainer);
+  
+  newListContainer.addEventListener("click", () => {
+    pushUserList(createList());
+  })
 
   const sidebar = document.createElement("div");
   sidebar.className = "list-sidebar";

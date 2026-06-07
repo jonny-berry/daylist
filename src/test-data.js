@@ -1,25 +1,22 @@
-function createList() {
+export function createList() {
   let title = "Today's Daylist";
 
-  let todos = [
-    { name: "Complete task!", status: "complete", id: crypto.randomUUID() },
-    { name: "Incomplete task :(", status: "incomplete", id: crypto.randomUUID() },
-    { name: "Wait.... I'm unset!!!", status: "unset", id: crypto.randomUUID() }
-  ];
+  const id = crypto.randomUUID();
 
-  let notes = [
-    { name: "This is a note", id: crypto.randomUUID() },
-    { name: "Another note????", id: crypto.randomUUID() },
-    { name: "Raspberry Lemon", id: crypto.randomUUID() },
-    { name: "Beep boop this is a note", id: crypto.randomUUID() }
-  ];
+  let todos = [];
 
-  return { title, todos, notes };
+  let notes = [];
+
+  return { title, id, todos, notes };
 }
 
 
+let userLists = [];
 
-export const testList = createList();
+
+export function pushUserList(list) {
+  userLists.push(list);
+}
 
 
 
