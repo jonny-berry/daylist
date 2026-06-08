@@ -74,14 +74,6 @@ function renderCreateList(listsDisplay) {
   const heading = document.createElement("h2");
   heading.textContent = "Create new Daylist";
   newListContainer.appendChild(heading);
-
-  const moreOptionsBtn = document.createElement("button");
-  moreOptionsBtn.className = "list-options-btn";
-  newListContainer.appendChild(moreOptionsBtn);
-
-  const moreOptionsImage = document.createElement("img");
-  moreOptionsImage.src = horizontalDots;
-  moreOptionsBtn.appendChild(moreOptionsImage);
 }
 
 
