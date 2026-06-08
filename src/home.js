@@ -10,7 +10,7 @@ import {
   setList,
   createList,
   pushUserList,
-  pinList
+  toggleListPin
 } from "./test-data.js";
 
 
@@ -30,6 +30,7 @@ function renderHomePage(list) {
   listsDisplay.className = "lists-display";
   document.body.appendChild(listsDisplay);
 
+  renderCreateList(listsDisplay);
   renderListsDisplay(list, listsDisplay);
 }
 
@@ -120,7 +121,7 @@ function renderList(list, listsDisplay) {
 
   moreOptionsImage.addEventListener("click", () => {
     event.stopPropagation();
-    renderListDropdown(moreOptionsBtn);
+    renderListDropdown(list, moreOptionsBtn);
   })
   
   moreOptionsBtn.appendChild(moreOptionsImage);
@@ -129,8 +130,6 @@ function renderList(list, listsDisplay) {
 
 
 function renderListsDisplay(list, listsDisplay) {
-  renderCreateList(listsDisplay);
-
   for (let i = 0; i < userLists.length; i++) {
     renderList(list[i], listsDisplay);
   }
@@ -138,19 +137,34 @@ function renderListsDisplay(list, listsDisplay) {
 
 
 
-function renderListDropdown(parentEl) {
+function renderListDropdown(list, imageElParent) {
   const container = document.createElement("div");
   container.className = "more-options-container";
-  parentEl.appendChild(container);
+  imageElParent.appendChild(container);
 
   const pinBtn = document.createElement("button");
-  pinBtn.innerText = "Pin list";
+
+  if (list.isPinned === false) {
+    pinBtn.innerText = "Pin list";
+  }
+  else {
+    pinBtn.innerText = "Unpin list";
+  }
+
   pinBtn.className = "option";
   container.appendChild(pinBtn);
 
   pinBtn.addEventListener("click", () => {
     event.stopPropagation();
-    pinList(parentEl.parentElement.id);
+
+    toggleListPin(imageElParent.parentElement.id);
+    imageElParent.removeChild(container);
+
+    const listContainer = imageElParent.parentElement;
+    const listsDisplay = document.querySelector(".lists-display");
+
+    removeUserLists(listsDisplay);
+    renderListsDisplay(userLists, listsDisplay);
   })
 
   const openAsViewerBtn = document.createElement("button");
@@ -162,4 +176,14 @@ function renderListDropdown(parentEl) {
   openAsEditorBtn.innerText = "Open as editor";
   openAsEditorBtn.className = "option";
   container.appendChild(openAsEditorBtn);
+}
+
+
+
+function removeUserLists(listsDisplay) {
+  for (let i = listsDisplay.children.length - 1; i > 0; i--) {
+    if (listsDisplay.children[i].classList.contains("list-container")) {
+      listsDisplay.removeChild(listsDisplay.children[i]);
+    }
+  }
 }

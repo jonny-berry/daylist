@@ -119,9 +119,10 @@ export function addNote(list, noteTextEl) {
 
 
 
-export function pinList(listId) {
+export function toggleListPin(listId) {
   let list = userLists.find(list => list.id === listId);
-  list.isPinned = true;
+
+  list.isPinned = !list.isPinned;
 
   saveState();
 }
