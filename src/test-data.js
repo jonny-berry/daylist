@@ -13,7 +13,7 @@ export function createList() {
 
   let isPinned = false;
 
-  return { id, creationTime, title, todos, notes, isPinned };
+  return { id, title, todos, notes, isPinned };
 }
 
 
@@ -26,6 +26,20 @@ export function loadUserLists() {
 
 
 export let userLists = [];
+
+
+
+
+export function movePinnedElementsToFront(list) {
+  for (let i = userLists.length - 1; i >= 0; i--) {
+    let currList = userLists.at(i);
+
+    if (currList.isPinned) {
+      list.splice(i, 1);
+      prependUserList(currList);
+    }
+  }
+}
 
 
 
