@@ -9,7 +9,7 @@ import {
   setCurrListId,
   setList,
   createList,
-  pushUserList,
+  prependUserList,
   toggleListPin
 } from "./test-data.js";
 
@@ -55,8 +55,8 @@ function renderCreateList(listsDisplay) {
   listsDisplay.appendChild(newListContainer);
 
   newListContainer.addEventListener("click", () => {
-    pushUserList(createList());
-    setCurrListId(userLists.at(-1).id);
+    prependUserList(createList());
+    setCurrListId(userLists.at(0).id);
     saveState();
 
     window.location.href = "/template.html";

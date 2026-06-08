@@ -180,7 +180,7 @@ function renderTodos(list) {
 }
 
 
-// itemType is either "todos" or "notes"
+
 function setupItemNameEvents(list, itemTextEl, itemType) {
   const itemContainer = itemTextEl.parentElement;
 

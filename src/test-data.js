@@ -13,7 +13,7 @@ export function createList() {
 
   let isPinned = false;
 
-  return { id, title, todos, notes, isPinned };
+  return { id, creationTime, title, todos, notes, isPinned };
 }
 
 
@@ -29,11 +29,12 @@ export let userLists = [];
 
 
 
-export function pushUserList(list) {
-  userLists.push(list);
+
+export function prependUserList(list) {
+  userLists.unshift(list);
+
   saveState();
 }
-
 
 
 export let currListId;
@@ -72,6 +73,7 @@ export function updateTodoStatus(list, todoId) {
 
 
 
+// itemType should be "todos" or "notes"
 export function updateItemName(list, itemTextEl, itemId, itemType) {
   let item = list[itemType].find(item => item.id === itemId);
 
@@ -79,8 +81,6 @@ export function updateItemName(list, itemTextEl, itemId, itemType) {
 
   saveState();
 }
-
-
 
 export function deleteItem(list, itemId, itemType) {
   let itemIndex = list[itemType].findIndex(item => item.id === itemId)
