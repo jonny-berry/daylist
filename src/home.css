@@ -82,14 +82,19 @@ h2 {
 
 .more-options-container {
   display: flex;
+  right: 0;
+  margin: -1.5rem 2rem 0 0;
   flex-direction: column;
   background-color: white;
   border: 1px solid black;
   height: fit-content;
   width: fit-content;
+  position: absolute;
+  overflow: visible;
 }
 
 .option {
+  position: relative;
   cursor: pointer;
   border: none;
   background-color: white;

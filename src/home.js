@@ -13,6 +13,7 @@ import {
 } from "./test-data.js";
 
 
+
 loadState();
 
 
@@ -115,6 +116,12 @@ function renderList(list, listsDisplay) {
 
   const moreOptionsImage = document.createElement("img");
   moreOptionsImage.src = horizontalDots;
+
+  moreOptionsImage.addEventListener("click", () => {
+    event.stopPropagation();  // Prevent event from bubbling up to parent container
+    renderListDropdown(moreOptionsBtn);
+  })
+  
   moreOptionsBtn.appendChild(moreOptionsImage);
 }
 
@@ -126,4 +133,27 @@ function renderListsDisplay(list, listsDisplay) {
   for (let i = 0; i < userLists.length; i++) {
     renderList(list[i], listsDisplay);
   }
+}
+
+
+
+function renderListDropdown(parentEl) {
+  const container = document.createElement("div");
+  container.className = "more-options-container";
+  parentEl.appendChild(container);
+
+  const pinBtn = document.createElement("button");
+  pinBtn.innerText = "Pin list";
+  pinBtn.className = "option";
+  container.appendChild(pinBtn);
+
+  const openAsViewerBtn = document.createElement("button");
+  openAsViewerBtn.innerText = "Open as viewer";
+  openAsViewerBtn.classList = "option bordered-option";
+  container.appendChild(openAsViewerBtn);
+
+  const openAsEditorBtn = document.createElement("button");
+  openAsEditorBtn.innerText = "Open as editor";
+  openAsEditorBtn.className = "option";
+  container.appendChild(openAsEditorBtn);
 }
