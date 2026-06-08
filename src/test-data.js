@@ -116,3 +116,12 @@ export function addNote(list, noteTextEl) {
 
   saveState();
 }
+
+
+
+export function pinList(listId) {
+  let list = userLists.find(list => list.id === listId);
+  list.isPinned = true;
+
+  saveState();
+}

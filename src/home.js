@@ -10,6 +10,7 @@ import {
   setList,
   createList,
   pushUserList,
+  pinList
 } from "./test-data.js";
 
 
@@ -118,7 +119,7 @@ function renderList(list, listsDisplay) {
   moreOptionsImage.src = horizontalDots;
 
   moreOptionsImage.addEventListener("click", () => {
-    event.stopPropagation();  // Prevent event from bubbling up to parent container
+    event.stopPropagation();
     renderListDropdown(moreOptionsBtn);
   })
   
@@ -146,6 +147,11 @@ function renderListDropdown(parentEl) {
   pinBtn.innerText = "Pin list";
   pinBtn.className = "option";
   container.appendChild(pinBtn);
+
+  pinBtn.addEventListener("click", () => {
+    event.stopPropagation();
+    pinList(parentEl.parentElement.id);
+  })
 
   const openAsViewerBtn = document.createElement("button");
   openAsViewerBtn.innerText = "Open as viewer";
