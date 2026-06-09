@@ -11,6 +11,7 @@ import {
   setList,
   createList,
   prependUserList,
+  removeList,
   toggleListPin,
 } from "./test-data.js";
 
@@ -152,7 +153,7 @@ function renderListDropdown(list, imageElParent) {
 
   const pinBtn = document.createElement("button");
 
-  document.addEventListener("click", (e) => {
+  document.addEventListener("click", () => {
     if (event.target.id !== container.id) {
       container.replaceChildren()
     }
@@ -168,14 +169,14 @@ function renderListDropdown(list, imageElParent) {
   pinBtn.className = "option";
   container.appendChild(pinBtn);
 
+  const listContainer = imageElParent.parentElement;
+  const listsDisplay = document.querySelector(".lists-display");
+
   pinBtn.addEventListener("click", () => {
     event.stopPropagation();
 
     toggleListPin(imageElParent.parentElement.id);
     imageElParent.removeChild(container);
-
-    const listContainer = imageElParent.parentElement;
-    const listsDisplay = document.querySelector(".lists-display");
 
     removeUserLists(listsDisplay);
     renderListsDisplay(userLists, listsDisplay);
@@ -195,6 +196,13 @@ function renderListDropdown(list, imageElParent) {
   deleteBtn.innerText = "Delete list";
   deleteBtn.className = "option";
   container.appendChild(deleteBtn);
+
+  deleteBtn.addEventListener("click", () => {
+    event.stopPropagation();
+    removeList(listContainer.id);
+    removeUserLists(listsDisplay);
+    renderListsDisplay(userLists, listsDisplay);
+  })
 }
 
 
