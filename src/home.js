@@ -94,7 +94,7 @@ function renderList(list, listsDisplay) {
   listsDisplay.appendChild(container);
 
   container.addEventListener("click", () => {
-    setCurrListId();
+    setCurrListId(list.id);
     saveState();
 
     window.location.href = "/template.html";

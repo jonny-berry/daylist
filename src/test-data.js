@@ -62,19 +62,24 @@ export let currListId;
 
 
 
-export function setCurrListId() {
-  let firstUnpinnedIndex = 0;
+export function setCurrListId(listId = -1) {
+  if (listId !== -1) {
+    currListId = listId;
+  }
+  else {
+    let firstUnpinnedIndex = 0;
 
-  for (firstUnpinnedIndex; firstUnpinnedIndex < userLists.length; firstUnpinnedIndex++) {
-    if (!userLists.at(firstUnpinnedIndex).isPinned) {
-      break;
+    for (firstUnpinnedIndex; firstUnpinnedIndex < userLists.length; firstUnpinnedIndex++) {
+      if (!userLists.at(firstUnpinnedIndex).isPinned) {
+        break;
+      }
+    }
+
+    if (userLists.length > 0) {
+      currListId = userLists[firstUnpinnedIndex].id;
     }
   }
-
-  if (userLists.length > 0) {
-    currListId = userLists[firstUnpinnedIndex].id;
-  }
-
+  
   saveState();
 }
 
