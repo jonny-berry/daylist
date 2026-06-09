@@ -56,13 +56,10 @@ function renderCreateList(listsDisplay) {
   newListContainer.className = "new-list-container";
   listsDisplay.appendChild(newListContainer);
 
+  let dialogEl = document.getElementsByClassName("create-list-dialog")[0];
   newListContainer.addEventListener("click", () => {
-    prependUserList(createList());
-    sortUserLists();
-    setCurrListId();
-    saveState();
-
-    window.location.href = "/template.html";
+    event.stopPropagation();
+    dialogEl.showModal();
   })
 
   const sidebar = document.createElement("div");
