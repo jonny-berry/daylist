@@ -182,6 +182,34 @@ function renderListDropdown(list, imageElParent) {
     renderListsDisplay(userLists, listsDisplay);
   })
 
+  const cycleBtn = document.createElement("button");
+  cycleBtn.innerText = "Cycle list color";
+  cycleBtn.className = "option";
+  container.appendChild(cycleBtn);
+
+  cycleBtn.addEventListener("click", () => {
+    event.stopPropagation();
+
+    if (listContainer.classList.contains("blue-bg")) {
+      listContainer.classList.remove("blue-bg");
+      listContainer.classList += " green-bg";
+    }
+    else if (listContainer.classList.contains("green-bg")) {
+      listContainer.classList.remove("green-bg");
+      listContainer.classList += " yellow-bg";
+    }
+    else if (listContainer.classList.contains("yellow-bg")) {
+      listContainer.classList.remove("yellow-bg");
+      listContainer.classList += " red-bg";
+    }
+    else if (listContainer.classList.contains("red-bg")) {
+      listContainer.classList.remove("red-bg");
+    }
+    else {
+      listContainer.classList += " blue-bg";
+    }
+  })
+
   const openAsViewerBtn = document.createElement("button");
   openAsViewerBtn.innerText = "Open as viewer";
   openAsViewerBtn.classList = "option bordered-option";

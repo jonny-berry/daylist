@@ -109,3 +109,19 @@ h2 {
 .option:hover {
   background-color: #D9D9D9;
 }
+
+.blue-bg {
+  background-color: rgba(0, 0, 255, 0.5);
+}
+
+.green-bg {
+  background-color: rgba(0, 128, 0, 0.5);
+}
+
+.yellow-bg {
+  background-color: rgba(255, 255, 0, 0.5);
+}
+
+.red-bg {
+  background-color: rgba(255, 0, 0, 0.5);
+}
