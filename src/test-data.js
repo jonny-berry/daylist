@@ -15,7 +15,9 @@ export function createList() {
 
   let isPinned = false;
 
-  return { id, creationTime, title, todos, notes, isPinned };
+  let color = "";
+
+  return { id, creationTime, title, todos, notes, isPinned, color };
 }
 
 

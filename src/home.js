@@ -88,6 +88,9 @@ function renderList(list, listsDisplay) {
   const container = document.createElement("div");
   container.id = list.id;
   container.className = "list-container";
+  if (list.color !== "") {
+    container.classList.add(`${list.color}-bg`);
+  }
   listsDisplay.appendChild(container);
 
   container.addEventListener("click", () => {
@@ -193,21 +196,28 @@ function renderListDropdown(list, imageElParent) {
     if (listContainer.classList.contains("blue-bg")) {
       listContainer.classList.remove("blue-bg");
       listContainer.classList += " green-bg";
+      list.color = "green";
     }
     else if (listContainer.classList.contains("green-bg")) {
       listContainer.classList.remove("green-bg");
       listContainer.classList += " yellow-bg";
+      list.color = "yellow";
     }
     else if (listContainer.classList.contains("yellow-bg")) {
       listContainer.classList.remove("yellow-bg");
       listContainer.classList += " red-bg";
+      list.color = "red";
     }
     else if (listContainer.classList.contains("red-bg")) {
       listContainer.classList.remove("red-bg");
+      list.color = "";
     }
     else {
       listContainer.classList += " blue-bg";
+      list.color = "blue";
     }
+
+    saveState();
   })
 
   const openAsViewerBtn = document.createElement("button");
