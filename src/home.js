@@ -10,8 +10,7 @@ import {
   setList,
   createList,
   prependUserList,
-  movePinnedElementsToFront,
-  toggleListPin
+  toggleListPin,
 } from "./test-data.js";
 
 
@@ -131,8 +130,6 @@ function renderList(list, listsDisplay) {
 
 
 function renderListsDisplay(list, listsDisplay) {
-  movePinnedElementsToFront(list);
-  
   for (let i = 0; i < userLists.length; i++) {
     renderList(list[i], listsDisplay);
   }

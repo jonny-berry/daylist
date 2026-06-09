@@ -5,6 +5,8 @@ import { loadState, saveState } from "./storage";
 export function createList() {
   const id = crypto.randomUUID();
 
+  const creationTime = Date.now();
+
   let title = "Today's Daylist";
 
   let todos = [];
@@ -13,7 +15,7 @@ export function createList() {
 
   let isPinned = false;
 
-  return { id, title, todos, notes, isPinned };
+  return { id, creationTime, title, todos, notes, isPinned };
 }
 
 
@@ -29,18 +31,16 @@ export let userLists = [];
 
 
 
+export function sortUserLists() {
+  const pinned = userLists.filter(list => list.isPinned).sort((a, b) => b.creationTime - a.creationTime);
 
-export function movePinnedElementsToFront(list) {
-  for (let i = userLists.length - 1; i >= 0; i--) {
-    let currList = userLists.at(i);
+  const unpinned = userLists.filter(list => !list.isPinned).sort((a, b) => b.creationTime - a.creationTime);
 
-    if (currList.isPinned) {
-      list.splice(i, 1);
-      prependUserList(currList);
-    }
-  }
+  userLists.length = 0;
+  userLists.push(...pinned, ...unpinned);
+
+  saveState();
 }
-
 
 
 
@@ -138,5 +138,11 @@ export function toggleListPin(listId) {
 
   list.isPinned = !list.isPinned;
 
+  console.log(userLists)
+
+  sortUserLists();
+
   saveState();
+
+  console.log(userLists)
 }
