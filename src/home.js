@@ -6,6 +6,7 @@ import horizontalDots from "./assets/icons/more.svg"
 import { loadState, saveState } from "./storage.js"
 import {
   userLists,
+  sortUserLists,
   setCurrListId,
   setList,
   createList,
@@ -56,7 +57,8 @@ function renderCreateList(listsDisplay) {
 
   newListContainer.addEventListener("click", () => {
     prependUserList(createList());
-    setCurrListId(userLists.at(0).id);
+    sortUserLists();
+    setCurrListId();
     saveState();
 
     window.location.href = "/template.html";
@@ -88,7 +90,7 @@ function renderList(list, listsDisplay) {
   listsDisplay.appendChild(container);
 
   container.addEventListener("click", () => {
-    setCurrListId(list.id);
+    setCurrListId();
     saveState();
 
     window.location.href = "/template.html";

@@ -46,7 +46,7 @@ export function sortUserLists() {
 
 export function prependUserList(list) {
   userLists.unshift(list);
-
+  
   saveState();
 }
 
@@ -55,11 +55,21 @@ export let currListId;
 
 
 
-export function setCurrListId(id) {
-  currListId = id;
+export function setCurrListId() {
+  let firstUnpinnedIndex = 0;
+
+  for (firstUnpinnedIndex; firstUnpinnedIndex < userLists.length; firstUnpinnedIndex++) {
+    if (!userLists.at(firstUnpinnedIndex).isPinned) {
+      break;
+    }
+  }
+
+  if (userLists.length > 0) {
+    currListId = userLists[firstUnpinnedIndex].id;
+  }
+
   saveState();
 }
-
 
 
 export function getCurrList() {
