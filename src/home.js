@@ -140,14 +140,20 @@ function renderListsDisplay(list, listsDisplay) {
 
 
 function renderListDropdown(list, imageElParent) {
+  if (document.querySelector(".more-options-container")) {
+    let previousDropdown = document.querySelector(".more-options-container");
+    previousDropdown.parentElement.removeChild(previousDropdown);
+  }
+
   const container = document.createElement("div");
+  container.id = crypto.randomUUID();
   container.className = "more-options-container";
   imageElParent.appendChild(container);
 
   const pinBtn = document.createElement("button");
 
   document.addEventListener("click", (e) => {
-    if (event.target !== container) {
+    if (event.target.id !== container.id) {
       container.replaceChildren()
     }
   })
