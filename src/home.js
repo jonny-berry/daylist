@@ -190,6 +190,11 @@ function renderListDropdown(list, imageElParent) {
   openAsEditorBtn.innerText = "Open as editor";
   openAsEditorBtn.className = "option";
   container.appendChild(openAsEditorBtn);
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.innerText = "Delete list";
+  deleteBtn.className = "option";
+  container.appendChild(deleteBtn);
 }
 
 
