@@ -144,6 +144,12 @@ function renderListDropdown(list, imageElParent) {
 
   const pinBtn = document.createElement("button");
 
+  document.addEventListener("click", (e) => {
+    if (event.target !== container) {
+      container.replaceChildren()
+    }
+  })
+
   if (list.isPinned === false) {
     pinBtn.innerText = "Pin list";
   }

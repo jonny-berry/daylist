@@ -138,11 +138,7 @@ export function toggleListPin(listId) {
 
   list.isPinned = !list.isPinned;
 
-  console.log(userLists)
-
   sortUserLists();
 
   saveState();
-
-  console.log(userLists)
 }
