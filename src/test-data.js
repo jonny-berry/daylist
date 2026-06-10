@@ -2,12 +2,10 @@ import { loadState, saveState } from "./storage";
 
 
 
-export function createList() {
+export function createList(title) {
   const id = crypto.randomUUID();
 
   const creationTime = Date.now();
-
-  let title = "Today's Daylist";
 
   let todos = [];
 

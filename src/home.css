@@ -148,7 +148,7 @@ h2 {
   margin-bottom: -0.5rem;
 }
 
-.create-list-dialog > form > button {
+.create-list-btn {
   background-color: #D9D9D9;
   border: 1px solid black;
 }

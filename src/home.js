@@ -250,7 +250,18 @@ function removeUserLists(listsDisplay) {
 }
 
 let dialogEl = document.getElementsByClassName("create-list-dialog")[0];
-
+let titleInput = document.getElementsByClassName("title-input")[0];
+console.log(titleInput.textContent)
 document.querySelector(".close-modal-btn").addEventListener("click", () => {
   dialogEl.close();
+})
+
+document.querySelector(".create-list-btn").addEventListener("click", () => {
+  event.preventDefault()
+  prependUserList(createList(titleInput.value));
+  sortUserLists();
+  setCurrListId();
+  saveState();
+
+  window.location.href = "/template.html";
 })
