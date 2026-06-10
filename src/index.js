@@ -223,16 +223,6 @@ function renderListDropdown(list, imageElParent) {
     saveState();
   })
 
-  const openAsViewerBtn = document.createElement("button");
-  openAsViewerBtn.innerText = "Open as viewer";
-  openAsViewerBtn.classList = "option bordered-option";
-  container.appendChild(openAsViewerBtn);
-
-  const openAsEditorBtn = document.createElement("button");
-  openAsEditorBtn.innerText = "Open as editor";
-  openAsEditorBtn.className = "option";
-  container.appendChild(openAsEditorBtn);
-
   const deleteBtn = document.createElement("button");
   deleteBtn.innerText = "Delete list";
   deleteBtn.className = "option";
