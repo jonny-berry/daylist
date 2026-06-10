@@ -34,6 +34,7 @@ h2 {
   display: flex;
   align-items: center;
   height: 4rem;
+  cursor: pointer;
 }
 
 .new-list-container > h2,
@@ -128,15 +129,23 @@ h2 {
 
 .create-list-dialog {
   border: 2px solid black;
-  height: fit-content;
-  width: fit-content;
+  height: 15rem;
+  width: 18rem;
   padding: 1.5rem 1rem;
 }
 
 .create-list-dialog > form {
   display: flex;
   flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  padding: 0.5rem;
   gap: 1rem;
+  width: 100%;
+}
+
+.create-list-dialog > form > label {
+  margin-bottom: -0.5rem;
 }
 
 .create-list-dialog > form > button {
@@ -144,8 +153,12 @@ h2 {
   border: 1px solid black;
 }
 
-.close-modal {
-  padding: 0 0 1rem 0;
+.close-modal-btn {
+  padding: 1rem 0;
   background-color: rgba(255, 255, 255, 0);
   border: none;
+}
+
+.close-modal-btn:focus  {
+  outline: none;
 }

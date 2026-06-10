@@ -56,7 +56,6 @@ function renderCreateList(listsDisplay) {
   newListContainer.className = "new-list-container";
   listsDisplay.appendChild(newListContainer);
 
-  let dialogEl = document.getElementsByClassName("create-list-dialog")[0];
   newListContainer.addEventListener("click", () => {
     event.stopPropagation();
     dialogEl.showModal();
@@ -249,3 +248,9 @@ function removeUserLists(listsDisplay) {
     }
   }
 }
+
+let dialogEl = document.getElementsByClassName("create-list-dialog")[0];
+
+document.querySelector(".close-modal-btn").addEventListener("click", () => {
+  dialogEl.close();
+})
