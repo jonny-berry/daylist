@@ -1,4 +1,5 @@
 import "../styles.css";
+import "./list.css";
 import arrowIcon from "../assets/icons/arrow.svg";
 import addIcon from "../assets/icons/add-blue.svg";
 import deleteIcon from "../assets/icons/delete.svg";

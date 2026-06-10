@@ -54,6 +54,8 @@ export function prependUserList(list) {
 
 export function removeList(listId) {
   userLists.splice(userLists.findIndex(list => list.id === listId), 1);
+
+  saveState();
 }
 
 export let currListId;
