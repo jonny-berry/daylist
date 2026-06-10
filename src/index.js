@@ -100,7 +100,7 @@ function renderList(list, listsDisplay) {
     setCurrListId(list.id);
     saveState();
 
-    window.location.href = "./list.html";
+    window.location.href = "list.html";
   })
 
   const sidebar = document.createElement("div");
@@ -270,7 +270,7 @@ document.querySelector(".create-list-btn").addEventListener("click", () => {
   setCurrListId();
   saveState();
 
-  window.location.href = "./list.html";
+  window.location.href = "list.html";
 })
 
 document.addEventListener("click", (e) => {

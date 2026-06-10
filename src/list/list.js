@@ -39,6 +39,10 @@ function renderHomeArrow() {
   const homeBtn = document.createElement("button");
   homeBtn.className = "home-btn";
   document.body.appendChild(homeBtn);
+
+  homeBtn.addEventListener("click", () => {
+    window.location.href = "index.html";
+  })
   
   const homeArrow = document.createElement("img");
   homeArrow.src = arrowIcon;
