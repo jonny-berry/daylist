@@ -1,9 +1,10 @@
-import arrowIcon from "./assets/icons/arrow.svg";
-import addIcon from "./assets/icons/add-blue.svg";
-import deleteIcon from "./assets/icons/delete.svg";
-import checkMarkIcon from "./assets/icons/check-mark.svg";
-import xIcon from "./assets/icons/x-icon.svg";
-import { loadState } from "./storage.js"
+import "../styles.css";
+import arrowIcon from "../assets/icons/arrow.svg";
+import addIcon from "../assets/icons/add-blue.svg";
+import deleteIcon from "../assets/icons/delete.svg";
+import checkMarkIcon from "../assets/icons/check-mark.svg";
+import xIcon from "../assets/icons/x-icon.svg";
+import { loadState } from "../storage.js"
 import {
   getCurrList,
   updateTodoStatus,
@@ -13,7 +14,7 @@ import {
   addNote,
   updateTitle,
   userLists,
-} from "./test-data.js";
+} from "../list-data.js";
 
 
 

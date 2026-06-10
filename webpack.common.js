@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 export default {
   entry: {
     index: "./src/index.js",
-    home: "./src/home.js",
+    list: "./src/list/list.js",
   },
   output: {
     filename: "[name].js",
@@ -13,14 +13,14 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/template.html",
-      filename: "template.html",
+      template: "./src/index.html",
+      filename: "index.html",
       chunks: ["index"],
     }),
     new HtmlWebpackPlugin({
-      template: "./src/home.html",
-      filename: "home.html",
-      chunks: ["home"],
+      template: "./src/list/list.html",
+      filename: "list.html",
+      chunks: ["list"],
     }),
   ],
   module: {
