@@ -265,3 +265,14 @@ document.querySelector(".create-list-btn").addEventListener("click", () => {
 
   window.location.href = "/template.html";
 })
+
+document.addEventListener("click", (e) => {
+  const rect = dialogEl.getBoundingClientRect();
+  const clickedBackdrop =
+    e.clientX < rect.left || e.clientX > rect.right ||
+    e.clientY < rect.top  || e.clientY > rect.bottom;
+
+  if (clickedBackdrop) {
+    dialogEl.close()
+  };
+})
