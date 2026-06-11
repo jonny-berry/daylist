@@ -4,11 +4,11 @@ import whitePlusIcon from "./assets/icons/add-white.svg";
 import pinIcon from "./assets/icons/pin.svg";
 import horizontalDots from "./assets/icons/more.svg";
 import lightMode from "./assets/icons/light-mode.svg";
-import darkModew from "./assets/icons/dark-mode.svg";
+import darkMode from "./assets/icons/dark-mode.svg";
 import swordBgOne from "./assets/images/sword-bg-1.gif";
 import swordBgTwo from "./assets/images/sword-bg-2.gif";
 import swordBgThree from "./assets/images/sword-bg-3.gif";
-import { loadState, saveState } from "./storage.js";
+import { colorTheme, setTheme, getTheme, loadState, saveState } from "./storage.js";
 import {
   userLists,
   sortUserLists,
@@ -57,9 +57,19 @@ function renderHero() {
   container.appendChild(colorModeBtn);
 
   const colorModeImg = document.createElement("img");
-  colorModeImg.src = lightMode;
+  colorModeImg.src = getTheme() === "dark" ? darkMode : lightMode;
   colorModeImg.className = "color-mode-img";
   colorModeBtn.appendChild(colorModeImg);
+
+  colorModeImg.addEventListener("click", () => {
+    const newTheme = getTheme() === "light" || getTheme() === "" ? "dark" : "light";
+
+    colorModeImg.src = newTheme === "dark" ? darkMode : lightMode;
+
+    setTheme(newTheme);
+
+    saveState();
+  });
 
   const heading = document.createElement("h1");
   heading.innerText = "Your Daylists";
@@ -270,7 +280,7 @@ function removeUserLists(listsDisplay) {
 
 let dialogEl = document.getElementsByClassName("create-list-dialog")[0];
 let titleInput = document.getElementsByClassName("title-input")[0];
-console.log(titleInput.textContent)
+
 document.querySelector(".close-modal-btn").addEventListener("click", () => {
   dialogEl.close();
 })
