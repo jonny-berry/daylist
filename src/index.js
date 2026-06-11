@@ -3,6 +3,8 @@ import "./index.css";
 import whitePlusIcon from "./assets/icons/add-white.svg";
 import pinIcon from "./assets/icons/pin.svg";
 import horizontalDots from "./assets/icons/more.svg";
+import lightMode from "./assets/icons/light-mode.svg";
+import darkModew from "./assets/icons/dark-mode.svg";
 import swordBgOne from "./assets/images/sword-bg-1.gif";
 import swordBgTwo from "./assets/images/sword-bg-2.gif";
 import swordBgThree from "./assets/images/sword-bg-3.gif";
@@ -49,6 +51,15 @@ function renderHero() {
   const bgIndex = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
   container.style.backgroundImage = `url(${heroBgs.at(bgIndex)})`;
   document.body.appendChild(container);
+
+  const colorModeBtn = document.createElement("button");
+  colorModeBtn.className = "color-mode-btn";
+  container.appendChild(colorModeBtn);
+
+  const colorModeImg = document.createElement("img");
+  colorModeImg.src = lightMode;
+  colorModeImg.className = "color-mode-img";
+  colorModeBtn.appendChild(colorModeImg);
 
   const heading = document.createElement("h1");
   heading.innerText = "Your Daylists";
