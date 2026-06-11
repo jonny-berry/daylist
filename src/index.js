@@ -2,7 +2,8 @@ import "./styles.css";
 import "./index.css";
 import whitePlusIcon from "./assets/icons/add-white.svg";
 import pinIcon from "./assets/icons/pin.svg";
-import horizontalDots from "./assets/icons/more.svg";
+import horizontalDotsLight from "./assets/icons/more-light-mode.svg";
+import horizontalDotsDark from "./assets/icons/more-dark-mode.svg";
 import lightMode from "./assets/icons/light-mode.svg";
 import darkMode from "./assets/icons/dark-mode.svg";
 import swordBgOne from "./assets/images/sword-bg-1.gif";
@@ -65,8 +66,19 @@ function renderHero() {
     const newTheme = getTheme() === "light" || getTheme() === "" ? "dark" : "light";
 
     colorModeImg.src = newTheme === "dark" ? darkMode : lightMode;
-
+    
     setTheme(newTheme);
+    
+    const moreOptionsArray = document.getElementsByClassName("more-options-img");
+
+    for (let i = 0; i < moreOptionsArray.length; i++) {
+      if (getTheme() === "light" || getTheme() === "") {
+        moreOptionsArray[i].src = horizontalDotsLight;
+      }
+      else {
+        moreOptionsArray[i].src = horizontalDotsDark;
+      }
+    }
 
     saveState();
   });
@@ -147,7 +159,11 @@ function renderList(list, listsDisplay) {
   container.appendChild(moreOptionsBtn);
 
   const moreOptionsImage = document.createElement("img");
-  moreOptionsImage.src = horizontalDots;
+  moreOptionsImage.className = "more-options-img"
+
+  getTheme() === "light" || getTheme() === "" ?
+  moreOptionsImage.src = horizontalDotsLight :
+  moreOptionsImage.src = horizontalDotsDark;
 
   moreOptionsImage.addEventListener("click", () => {
     event.stopPropagation();
