@@ -156,11 +156,13 @@ function renderTask(list, taskIndex) {
 
     if (list.todos[taskIndex].status === "complete") {
       taskIcon.src = checkMarkIcon;
-      button.className += " completed-task";
+      button.classList.add("completed-task");
+      if (getTheme() === "dark") button.classList.add("completed-task-dark-mode");
     }
     else if (list.todos[taskIndex].status === "incomplete") {
       taskIcon.src = xIcon;
-      button.className += " incomplete-task";
+      button.classList.add("incomplete-task");
+      if (getTheme() === "dark") button.classList.add("incomplete-task-dark-mode");
     }
     
     button.appendChild(taskIcon);
@@ -222,18 +224,22 @@ function updateTodoDisplay(statusBtn) {
 
   if (statusBtn.classList.contains("completed-task")) {
     statusBtn.classList.remove("completed-task");
+    statusBtn.classList.remove("completed-task-dark-mode");
     taskIcon.src = xIcon;
-    statusBtn.className += " incomplete-task";
+    statusBtn.classList.add("incomplete-task");
+    if (getTheme() === "dark") statusBtn.classList.add("incomplete-task-dark-mode");
     statusBtn.appendChild(taskIcon);
   }
 
   else if (statusBtn.classList.contains("incomplete-task")) {
     statusBtn.classList.remove("incomplete-task");
+    statusBtn.classList.remove("incomplete-task-dark-mode");
   }
 
   else {
     taskIcon.src = checkMarkIcon;
-    statusBtn.className += " completed-task";
+    statusBtn.classList.add("completed-task");
+    if (getTheme() === "dark") statusBtn.classList.add("completed-task-dark-mode");
     statusBtn.appendChild(taskIcon);
   }
 }
@@ -249,6 +255,7 @@ function renderAddTaskDisplay(list) {
 
   const button = document.createElement("button");
   button.className = "add-task-btn";
+  if (getTheme() === "dark") button.classList.add("add-task-btn-dark-mode");
   taskContainer.appendChild(button);
 
   const addEl = document.createElement("img");
@@ -325,6 +332,8 @@ function convertAddTaskButtonToTask(list, addTaskTextEl, addTaskBtn) {
   addTaskContainer.classList.add("task-container");
 
   addTaskBtn.classList.remove("add-task-btn");
+  addTaskBtn.classList.remove("add-task-btn");
+  addTaskBtn.classList.remove("add-task-btn-dark-mode");
   addTaskBtn.classList.add("task-status-btn");
   addTaskBtn.replaceChildren(); // Remove all children
 

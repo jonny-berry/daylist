@@ -75,8 +75,20 @@ ul {
   background-color: #F3D9D9;
 }
 
+.completed-task-dark-mode {
+  border: 1px solid #00FF00 !important;
+}
+
+.incomplete-task-dark-mode {
+  border: 1px solid #FF0000 !important;
+}
+
 .add-task-btn {
   background-color: #D6F3FF;
+}
+
+.add-task-btn-dark-mode {
+  border: 1px solid #0084FF !important;
 }
 
 .note-list {
