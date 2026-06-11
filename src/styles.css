@@ -1,6 +1,11 @@
 @import url("https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.css");
 
 :root {
+  --bg: white;
+  --color-main: #111111;
+  --hero-text: white;
+  --dark-gray-text: #4B4B4B;
+  --gray-accent: #D9D9D9;
   line-height: 1.5;
 }
 
@@ -19,7 +24,7 @@ h1, h2, h3, h4, h5 {
 
 h1,
 h2 {
-  color: #111111;
+  color: var(--color-main);
   font-weight: 700;
 }
 
