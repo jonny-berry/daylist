@@ -1,11 +1,13 @@
 import "../styles.css";
 import "./list.css";
-import arrowIcon from "../assets/icons/arrow.svg";
+import arrowIconLight from "../assets/icons/arrow-light-mode.svg";
+import arrowIconDark from "../assets/icons/arrow-dark-mode.svg";
 import addIcon from "../assets/icons/add-blue.svg";
-import deleteIcon from "../assets/icons/delete.svg";
+import deleteIconLight from "../assets/icons/delete-light-mode.svg";
+import deleteIconDark from "../assets/icons/delete-dark-mode.svg";
 import checkMarkIcon from "../assets/icons/check-mark.svg";
 import xIcon from "../assets/icons/x-icon.svg";
-import { loadState } from "../storage.js"
+import { getTheme, loadState } from "../storage.js"
 import {
   getCurrList,
   updateTodoStatus,
@@ -45,7 +47,11 @@ function renderHomeArrow() {
   })
   
   const homeArrow = document.createElement("img");
-  homeArrow.src = arrowIcon;
+
+  getTheme() === "light" || getTheme() === "" ?
+  homeArrow.src = arrowIconLight :
+  homeArrow.src = arrowIconDark
+
   homeArrow.className = "home-arrow";
   homeBtn.appendChild(homeArrow);
 }
@@ -106,7 +112,11 @@ function addDeleteBtns(list, taskContainer, itemType) {
   taskContainer.appendChild(deleteBtn);
 
   const deleteImage = document.createElement("img");
-  deleteImage.src = deleteIcon;
+
+  getTheme() === "light" || getTheme() === "" ?
+  deleteImage.src = deleteIconLight :
+  deleteImage.src = deleteIconDark;
+
   deleteBtn.appendChild(deleteImage);
 
   deleteBtn.addEventListener("click", () => {

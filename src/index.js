@@ -9,7 +9,7 @@ import darkMode from "./assets/icons/dark-mode.svg";
 import swordBgOne from "./assets/images/sword-bg-1.gif";
 import swordBgTwo from "./assets/images/sword-bg-2.gif";
 import swordBgThree from "./assets/images/sword-bg-3.gif";
-import { colorTheme, setTheme, getTheme, loadState, saveState } from "./storage.js";
+import { setTheme, getTheme, loadState, saveState } from "./storage.js";
 import {
   userLists,
   sortUserLists,
@@ -68,7 +68,7 @@ function renderHero() {
     colorModeImg.src = newTheme === "dark" ? darkMode : lightMode;
     
     setTheme(newTheme);
-    
+
     const moreOptionsArray = document.getElementsByClassName("more-options-img");
 
     for (let i = 0; i < moreOptionsArray.length; i++) {
