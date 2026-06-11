@@ -161,7 +161,8 @@ function renderListDropdown(list, imageElParent) {
 
   document.addEventListener("click", () => {
     if (event.target.id !== container.id) {
-      container.replaceChildren()
+      container.replaceChildren();
+      container.style.display = "none"
     }
   })
 
