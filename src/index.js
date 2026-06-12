@@ -9,6 +9,10 @@ import darkMode from "./assets/icons/dark-mode.svg";
 import swordBgOne from "./assets/images/sword-bg-1.gif";
 import swordBgTwo from "./assets/images/sword-bg-2.gif";
 import swordBgThree from "./assets/images/sword-bg-3.gif";
+import gitHubIconLight from "./assets/icons/github-light-mode.svg";
+import gitHubIconDark from "./assets/icons/github-dark-mode.svg";
+import miniMossLightMode from "./assets/icons/mini-moss-light-mode.png";
+import miniMossDarkMode from "./assets/icons/mini-moss-dark-mode.png";
 import { setTheme, getTheme, loadState, saveState } from "./storage.js";
 import {
   userLists,
@@ -70,13 +74,19 @@ function renderHero() {
     setTheme(newTheme);
 
     const moreOptionsArray = document.getElementsByClassName("more-options-img");
+    const gitHubLogo = document.getElementsByClassName("github-logo")[0];
+    const miniMossLogo = document.getElementsByClassName("mini-moss-logo")[0];
 
     for (let i = 0; i < moreOptionsArray.length; i++) {
       if (getTheme() === "light" || getTheme() === "") {
         moreOptionsArray[i].src = horizontalDotsLight;
+        gitHubLogo.src = gitHubIconLight;
+        miniMossLogo.src = miniMossLightMode;
       }
       else {
         moreOptionsArray[i].src = horizontalDotsDark;
+        gitHubLogo.src = gitHubIconDark;
+        miniMossLogo.src = miniMossDarkMode;
       }
     }
 
@@ -261,16 +271,6 @@ function renderListDropdown(list, imageElParent) {
     saveState();
   })
 
-  const openAsViewerBtn = document.createElement("button");
-  openAsViewerBtn.innerText = "Open as viewer";
-  openAsViewerBtn.classList = "option bordered-option";
-  container.appendChild(openAsViewerBtn);
-
-  const openAsEditorBtn = document.createElement("button");
-  openAsEditorBtn.innerText = "Open as editor";
-  openAsEditorBtn.className = "option";
-  container.appendChild(openAsEditorBtn);
-
   const deleteBtn = document.createElement("button");
   deleteBtn.innerText = "Delete list";
   deleteBtn.className = "option";
@@ -321,3 +321,43 @@ document.addEventListener("click", (e) => {
     dialogEl.close()
   };
 })
+
+
+renderFooter();
+
+
+
+function renderFooter() {
+  const footerEl = document.createElement("footer");
+  document.body.appendChild(footerEl);
+
+  const gitHubAnchor = document.createElement("a");
+  gitHubAnchor.href = "https://github.com/jonny-berry";
+  gitHubAnchor.target = "_blank";
+  footerEl.appendChild(gitHubAnchor);
+
+  const gitHubLogo = document.createElement("img");
+  gitHubLogo.className = "github-logo";
+  if (getTheme() === "light" || getTheme() === "") {
+    gitHubLogo.src = gitHubIconLight;
+  }
+  else {
+    gitHubLogo.src = gitHubIconDark;
+  }
+  gitHubAnchor.appendChild(gitHubLogo);
+
+  const miniMossAnchor = document.createElement("a");
+  miniMossAnchor.href = "https://www.reddit.com/user/mini-moss";
+  miniMossAnchor.target = "_blank";
+  footerEl.appendChild(miniMossAnchor);
+
+  const miniMossLogo = document.createElement("img");
+  miniMossLogo.className = "mini-moss-logo";
+  if (getTheme() === "light" || getTheme() === "") {
+    miniMossLogo.src = miniMossLightMode;
+  }
+  else {
+    miniMossLogo.src = miniMossDarkMode;
+  }
+  miniMossAnchor.appendChild(miniMossLogo);
+}
