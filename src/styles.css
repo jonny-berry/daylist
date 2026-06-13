@@ -64,6 +64,10 @@ ol[role="list"], ul[role="list"] {
   padding-inline: 0;
 }
 
+li {
+  list-style: none;
+}
+
 button {
   cursor: pointer;
 }
