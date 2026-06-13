@@ -10,6 +10,8 @@
   --green-bg: rgba(0, 128, 0, 0.5);
   --yellow-bg: rgba(255, 255, 0, 0.5);
   --red-bg: rgba(255, 0, 0, 0.5);
+  --task-status-green: #00ce0023;
+  --task-status-red: #ce00002f;
   line-height: 1.5;
 }
 
@@ -23,6 +25,8 @@
   --green-bg: rgba(123, 255, 123, 0.5);
   --yellow-bg: rgba(255, 255, 128, 0.5);
   --red-bg: rgba(255, 120, 120, 0.5);
+  --task-status-green: #00ff0056;
+  --task-status-red: #ff000052;
   line-height: 1.5; 
 }
 
