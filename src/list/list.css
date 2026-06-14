@@ -59,7 +59,6 @@ ul {
   margin: 2rem 0 0 0.2rem;
 }
 
-
 .task-container,
 .add-task-container {
   align-items: center;
@@ -130,7 +129,7 @@ ul {
   border-radius: 50%;
   width: 8px;
   height: 8px;
-  margin: 0.5rem 0 0 0.3rem;
+  margin: 1rem 0 0 0.3rem;
 }
 
 .note,
@@ -149,6 +148,10 @@ ul {
 .note-span:focus,
 .add-note-span:focus {
   font-style: normal;
+}
+
+.note-span {
+  display: block;
 }
 
 .title {
