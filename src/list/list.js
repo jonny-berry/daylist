@@ -382,6 +382,10 @@ function renderNotes(list) {
     noteContatiner.className = "note-container";
     noteList.appendChild(noteContatiner);
 
+    const bulletPoint = document.createElement("div");
+    bulletPoint.className = "bullet-point";
+    noteContatiner.appendChild(bulletPoint);
+
     const note = document.createElement("li");
     note.className = "note";
 
@@ -407,6 +411,10 @@ function renderAddNoteDisplay(list) {
   const addNoteContainer = document.createElement("div");
   addNoteContainer.className = "add-note-container";
   noteList.appendChild(addNoteContainer);
+
+  const bulletPoint = document.createElement("div");
+  bulletPoint.className = "bullet-point";
+  addNoteContainer.appendChild(bulletPoint);
 
   const note = document.createElement("li");
   note.className = "add-note";

@@ -52,8 +52,8 @@ ul {
 .add-task-container {
   display: grid;
   grid-template: 1fr / 0.5fr 10fr 1fr;
+  gap: 5%;
   margin: 2rem 0 0 0.2rem;
-  gap: 3%;
   align-items: center;
   text-align: left;
   font-size: 1rem;
@@ -116,10 +116,20 @@ ul {
 
 .note-container,
 .add-note-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  display: grid;
+  grid-template: 1fr / 0.5fr 10fr 1fr;
+  gap: 3%;
   margin: 2rem 0 0 0.2rem;
+}
+
+.bullet-point {
+  display: flex;
+  align-self: flex-start;
+  background-color: var(--color-main);
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  margin: 0.5rem 0 0 0.3rem;
 }
 
 .note,
@@ -152,7 +162,7 @@ ul {
 .note-span,
 .add-note-span {
   cursor: pointer;
-  padding: 0.5rem 0.5rem 0.5rem 0.3rem;
+  padding: 0.5rem 0.5rem 0.5rem 0;
 }
 
 li::marker {
