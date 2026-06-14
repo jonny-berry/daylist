@@ -22,7 +22,7 @@ ul {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  margin: 4rem 0;
+  margin: 6rem 0;
 }
 
 .home-btn {
@@ -158,6 +158,7 @@ ul {
   padding: 0.5%;
   margin: -0.5% 5% 1% 2%;
   left: -2%;
+  cursor: pointer;
 }
 
 .task-name,
