@@ -88,7 +88,7 @@ function renderListInfo(list) {
   });
 
   title.addEventListener("blur", () => {
-    if (title.textContent === "") {
+    if (!/[a-zA-Z]|[0-9]/.test(title.textContent)) {
       title.textContent = "Add Title";
 
       updateTitle(list, title);
@@ -200,19 +200,26 @@ function renderTodos(list) {
 
 
 function setupItemNameEvents(list, itemTextEl, itemType) {
-  const itemContainer = itemTextEl.parentElement;
-
-  itemContainer.addEventListener("input", () => {
-    updateItemName(list, itemTextEl, itemContainer.id, itemType);
-  });
-
-  itemTextEl.addEventListener("blur", () => {
-    if (itemTextEl.innerText === "" || itemTextEl.innerText === "\n") {
-      itemType === "todos" ? itemTextEl.innerText = "Empty task" : itemTextEl.innerText = "Empty note";
-
+  let itemContainer;
+  
+  if (itemType === "todos") {
+    itemContainer = itemTextEl.parentElement;
+  }
+  else if (itemType === "notes") {
+    itemContainer = itemTextEl.parentElement.parentElement;
+  }
+  
+  if (!/[a-zA-Z]|[0-9]/.test(itemTextEl.innerText)) {
+    itemContainer.addEventListener("input", () => {
       updateItemName(list, itemTextEl, itemContainer.id, itemType);
-    }
-  });
+    });
+  }
+  else {
+    itemTextEl.addEventListener("blur", () => {
+      itemType === "todos" ? itemTextEl.innerText = "Empty task" : itemTextEl.innerText = "Empty note";
+      updateItemName(list, itemTextEl, itemContainer.id, itemType);
+    })
+  }
 }
 
 
@@ -284,7 +291,7 @@ function onAddTaskClick(list, taskTextEl, button) {
   taskTextEl.addEventListener("blur", () => {
     if (taskTextEl.classList.contains("add-task") === true) {
       if (
-        taskTextEl.innerText !== "" &&
+        /[a-zA-Z]|[0-9]/.test(taskTextEl.innerText) && 
         taskTextEl.innerText !== "Tap to add a task"
       ) {
         convertAddTaskButtonToTask(list, taskTextEl, button);
@@ -307,12 +314,12 @@ function onAddNoteClick(list, noteTextEl, textSpan) {
     textSpan.addEventListener("blur", () => {
       if (noteTextEl.classList.contains("add-note") === true) {
         if (
-          textSpan.innerText !== "" &&
+          /[a-zA-Z]|[0-9]/.test(textSpan.innerText) &&
           textSpan.innerText !== "Tap to add a note"
         ) {
           convertAddNoteButtonToNote(list, noteTextEl);
           renderAddNoteDisplay(list);
-        }
+        } 
         else {
           textSpan.innerText = "Tap to add a note";
         }
@@ -320,8 +327,6 @@ function onAddNoteClick(list, noteTextEl, textSpan) {
     });
   });
 }
-
-
 
 function convertAddTaskButtonToTask(list, addTaskTextEl, addTaskBtn) {
   addTodo(list, addTaskTextEl);
@@ -396,7 +401,7 @@ function renderNotes(list) {
     note.appendChild(textSpan);
     noteContatiner.appendChild(note);
 
-    setupItemNameEvents(list, note, "notes");
+    setupItemNameEvents(list, textSpan, "notes");
     addDeleteBtns(list, noteContatiner, "notes");
   }
 
