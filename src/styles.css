@@ -84,7 +84,8 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 5rem;
-  margin: 10rem 0 1rem 0;
+  padding-top: 5rem;
+  margin: auto 0 1rem 0;
   color: var(--color-main);
   font-size: 0.8rem;
   font-weight: 500;

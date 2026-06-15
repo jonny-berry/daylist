@@ -304,7 +304,7 @@ document.querySelector(".close-modal-btn").addEventListener("click", () => {
 document.querySelector(".create-list-btn").addEventListener("click", () => {
   event.preventDefault()
 
-  if (titleInput.value.length >= 1) {
+  if (/[a-zA-Z]|[0-9]/.test(titleInput.value)) {
     prependUserList(createList(titleInput.value));
     sortUserLists();
     setCurrListId();
@@ -312,9 +312,8 @@ document.querySelector(".create-list-btn").addEventListener("click", () => {
 
     window.location.href = "list.html";
   }
-
   else {
-    alert("Enter a title before creating the list")
+    alert("List titles must contain an alphanumeric character")
   }
 })
 
