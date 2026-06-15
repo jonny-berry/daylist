@@ -208,18 +208,13 @@ function setupItemNameEvents(list, itemTextEl, itemType) {
   else if (itemType === "notes") {
     itemContainer = itemTextEl.parentElement.parentElement;
   }
-  
-  if (/[a-zA-Z]|[0-9]/.test(itemTextEl.innerText)) {
-    itemContainer.addEventListener("input", () => {
-      updateItemName(list, itemTextEl, itemContainer.id, itemType);
-    });
-  }
-  else {
-    itemTextEl.addEventListener("blur", () => {
+
+  itemTextEl.addEventListener("blur", () => {
+    if (!/[a-zA-Z]|[0-9]/.test(itemTextEl.innerText)) {
       itemType === "todos" ? itemTextEl.innerText = "Empty task" : itemTextEl.innerText = "Empty note";
-      updateItemName(list, itemTextEl, itemContainer.id, itemType);
-    })
-  }
+    }
+    updateItemName(list, itemTextEl, itemContainer.id, itemType);
+  })
 }
 
 
