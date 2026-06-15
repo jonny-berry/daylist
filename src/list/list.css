@@ -58,6 +58,17 @@ ul {
   grid-template: 1fr / 0.5fr 10fr 1fr;
   gap: 1rem;
   margin: 2rem 0 0 0.2rem;
+  padding: 1rem;
+  border-radius: 15px;
+  transition: background-color ease-out 0.33s;
+  z-index: 0;
+}
+
+.task-container:hover,
+.add-task-container:hover,
+.note-container:hover,
+.add-note-container:hover {
+  background-color: rgba(255, 255, 255, 0.082);
 }
 
 
@@ -176,7 +187,7 @@ ul {
 .note-span,
 .add-note-span {
   display: block;
-  border: 1px solid var(--bg);
+  border: 1px solid rgba(255, 255, 255, 0);
 }
 
 .note-span:focus,
@@ -206,6 +217,7 @@ li::marker {
   border: none;
   cursor: pointer;
   margin-left: auto;
+  align-self: center;
   justify-content: center;
   align-items: center;
 }
@@ -239,6 +251,13 @@ li::marker {
   .delete-btn {
     width: 23px;
     height: 23px;
+  }
+
+  .task-container,
+  .add-task-container,
+  .note-container,
+  .add-note-container {
+    padding: 1rem;
   }
 }
 

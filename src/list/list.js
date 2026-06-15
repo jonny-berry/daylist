@@ -209,7 +209,7 @@ function setupItemNameEvents(list, itemTextEl, itemType) {
     itemContainer = itemTextEl.parentElement.parentElement;
   }
   
-  if (!/[a-zA-Z]|[0-9]/.test(itemTextEl.innerText)) {
+  if (/[a-zA-Z]|[0-9]/.test(itemTextEl.innerText)) {
     itemContainer.addEventListener("input", () => {
       updateItemName(list, itemTextEl, itemContainer.id, itemType);
     });

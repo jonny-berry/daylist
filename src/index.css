@@ -45,6 +45,7 @@ h2 {
 .list-container > h2 {
   margin-left: 0.5rem;
   width: 100%;
+  overflow: hidden;
 }
 
 .list-sidebar {
