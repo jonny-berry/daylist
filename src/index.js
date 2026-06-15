@@ -303,12 +303,19 @@ document.querySelector(".close-modal-btn").addEventListener("click", () => {
 
 document.querySelector(".create-list-btn").addEventListener("click", () => {
   event.preventDefault()
-  prependUserList(createList(titleInput.value));
-  sortUserLists();
-  setCurrListId();
-  saveState();
 
-  window.location.href = "list.html";
+  if (titleInput.value.length >= 1) {
+    prependUserList(createList(titleInput.value));
+    sortUserLists();
+    setCurrListId();
+    saveState();
+
+    window.location.href = "list.html";
+  }
+
+  else {
+    alert("Enter a title before creating the list")
+  }
 })
 
 document.addEventListener("click", (e) => {
