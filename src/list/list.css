@@ -23,6 +23,7 @@ ul {
   left: 50%;
   transform: translateX(-50%);
   margin: 6rem 0;
+  overflow: hidden;
 }
 
 .home-btn {
@@ -130,7 +131,7 @@ ul {
   border-radius: 50%;
   width: 8px;
   height: 8px;
-  margin: 0.5rem 0 0 0.3rem;
+  margin: 1rem 0 0 0.3rem;
 }
 
 .note,
@@ -171,6 +172,20 @@ ul {
   font-weight: 400;
   overflow: hidden;
 }
+
+.note-span,
+.add-note-span {
+  display: block;
+  border: 1px solid var(--bg);
+}
+
+.note-span:focus,
+.add-note-span:focus {
+  outline: none;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+  
 
 .add-note-span {
   display: flex;
