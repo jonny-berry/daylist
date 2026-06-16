@@ -19,14 +19,14 @@ import {
   userLists,
 } from "../list-data.js";
 
-
-
 loadState();
 renderList(getCurrList());
 
 
 
 export function renderList(list) {
+  document.title = list.title;
+
   renderHomeArrow();
   renderListInfo(list);
   renderSectionDivider();

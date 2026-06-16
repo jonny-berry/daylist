@@ -250,7 +250,8 @@ li::marker {
   }
 
   p,
-  .note-span {
+  .note-span,
+  .add-note-span {
     font-size: 1rem !important;
   }
 
@@ -280,7 +281,8 @@ li::marker {
   }
 
   p,
-  .note-span {
+  .note-span,
+  .ass-note-span {
     font-size: 1.2rem !important;
   }
 }
