@@ -97,4 +97,5 @@ footer > a {
 
 footer > a > img {
   height: 1.5rem;
+  will-change: true;
 }

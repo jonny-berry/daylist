@@ -77,16 +77,20 @@ function renderHero() {
     const gitHubLogo = document.getElementsByClassName("github-logo")[0];
     const miniMossLogo = document.getElementsByClassName("mini-moss-logo")[0];
 
-    for (let i = 0; i < moreOptionsArray.length; i++) {
-      if (getTheme() === "light" || getTheme() === "") {
-        moreOptionsArray[i].src = horizontalDotsLight;
+    if (getTheme() === "light" || getTheme() === "") {
         gitHubLogo.src = gitHubIconLight;
         miniMossLogo.src = miniMossLightMode;
+        
+      for (let i = 0; i < moreOptionsArray.length; i++) {
+        moreOptionsArray[i].src = horizontalDotsLight;
       }
-      else {
-        moreOptionsArray[i].src = horizontalDotsDark;
+    }
+    else {
         gitHubLogo.src = gitHubIconDark;
         miniMossLogo.src = miniMossDarkMode;
+        
+      for (let i = 0; i < moreOptionsArray.length; i++) {
+        moreOptionsArray[i].src = horizontalDotsDark;
       }
     }
 
