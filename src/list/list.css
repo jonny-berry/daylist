@@ -64,11 +64,19 @@ ul {
   z-index: 0;
 }
 
+:root {
+  --hover-transition-color: rgba(0, 0, 0, 0.082);
+}
+
+:root.dark {
+  --hover-transition-color: rgba(255, 255, 255, 0.082);
+}
+
 .task-container:hover,
 .add-task-container:hover,
 .note-container:hover,
 .add-note-container:hover {
-  background-color: rgba(255, 255, 255, 0.082);
+  background-color: var(--hover-transition-color);
 }
 
 
