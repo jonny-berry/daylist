@@ -41,6 +41,43 @@ h2 {
   overflow: hidden;
 }
 
+.new-list-container,
+.list-container,
+.create-list-btn, 
+.red-bg,
+.green-bg,
+.yellow-bg,
+.blue-bg {
+  transition: background-color ease-out 0.33s;
+}
+
+
+.new-list-container:hover,
+.list-container:hover,
+.create-list-btn:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.new-list-container.red-bg:hover,
+.list-container.red-bg:hover {
+  background-color: rgba(153, 42, 42, 0.6);
+}
+
+.new-list-container.blue-bg:hover,
+.list-container.blue-bg:hover {
+  background-color: rgba(37, 37, 119, 0.6);
+}
+
+.new-list-container.green-bg:hover,
+.list-container.green-bg:hover {
+  background-color: rgba(22, 92, 22, 0.6);
+}
+
+.new-list-container.yellow-bg:hover,
+.list-container.yellow-bg:hover {
+  background-color: rgba(156, 156, 0, 0.6);
+} 
+
 .new-list-container > h2,
 .list-container > h2 {
   margin-left: 0.5rem;

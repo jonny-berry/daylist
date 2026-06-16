@@ -75,24 +75,17 @@ function renderListInfo(list) {
 
   const title = document.createElement("h1");
   title.className = "title";
-  title.innerText = list.title;
+  title.textContent = list.title;
   container.appendChild(title);
 
   title.contentEditable = true;
   title.spellcheck = false;
 
-  title.addEventListener("input", () => {
-    if (title.textContent !== "") {
-      updateTitle(list, title);
-    }
-  });
-
   title.addEventListener("blur", () => {
     if (!/[a-zA-Z]|[0-9]/.test(title.textContent)) {
       title.textContent = "Add Title";
-
-      updateTitle(list, title);
     }
+    updateTitle(list, title);
   })
 }
 
